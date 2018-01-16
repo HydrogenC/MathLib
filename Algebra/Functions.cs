@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace AlgebraicLib
+namespace Algebra
 {
     public class Functions
     {

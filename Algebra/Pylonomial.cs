@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 
-namespace AlgebraicLib
+namespace Algebra
 {
     public class Pylonomial
     {

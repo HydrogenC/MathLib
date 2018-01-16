@@ -51,7 +51,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Arithmetic\Arithmetic.csproj">
       <Project>{c22b7c59-43a4-49f1-af20-880d063c11ad}</Project>
-      <Name>MathFunctions</Name>
+      <Name>Arithmetic</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

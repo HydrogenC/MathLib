@@ -5,7 +5,7 @@ using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MathFunctions
+namespace Arithmetic
 {
     public class IntegerFunctions
     {
@@ -14,7 +14,7 @@ namespace MathFunctions
         /// </summary>
         /// <param name="a">The numbers</param>
         /// <param name="b">The numbers</param>
-        /// <param name="gcd">If true, it returns GCD, else returns LCM</param>
+        /// <param name="type">If true, it returns GCD, else returns LCM</param>
         /// <returns></returns>
         public static BigInteger GetLCMGCD(BigInteger a, BigInteger b, Boolean type)
         {

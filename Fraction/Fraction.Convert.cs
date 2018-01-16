@@ -17,9 +17,9 @@ namespace Fraction
         {
             return (Double)(Decimal)a;
         }
-        public static explicit operator Int64(Fraction a)
+        public static explicit operator BigInteger(Fraction a)
         {
-            return (Int64)Math.Floor((Decimal)a);
+            return (BigInteger)Math.Floor((Decimal)a);
         }
         public static explicit operator String(Fraction a)
         {
@@ -27,14 +27,19 @@ namespace Fraction
         }
         public static explicit operator Fraction(Decimal a)
         {
-            Decimal multiplier = 1;
-            while (true)
-            {
-                if (a * multiplier % 1 == 0)
-                {
-
-                }
-            }
+            return new Fraction(a);
+        }
+        public static explicit operator Fraction(String a)
+        {
+            return new Fraction(a);
+        }
+        public static explicit operator Fraction(BigInteger a)
+        {
+            return new Fraction(a);
+        }
+        public static explicit operator Fraction(Double a)
+        {
+            return new Fraction((Decimal)a);
         }
     }
 }

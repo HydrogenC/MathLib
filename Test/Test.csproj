@@ -55,6 +55,10 @@
       <Project>{052c5b13-c6b8-47e2-a0ee-60cbc3fc134c}</Project>
       <Name>AlgebraicLib</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Arithmetic\Arithmetic.csproj">
+      <Project>{c22b7c59-43a4-49f1-af20-880d063c11ad}</Project>
+      <Name>Arithmetic</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Fraction\Fraction.csproj">
       <Project>{6035406b-90df-42ec-a6a3-0a8d22d78927}</Project>
       <Name>Fraction</Name>

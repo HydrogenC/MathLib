@@ -4,7 +4,7 @@ using System.Linq;
 using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
-using static MathFunctions.IntegerFunctions;
+using static Arithmetic.IntegerFunctions;
 
 namespace Fraction
 {
