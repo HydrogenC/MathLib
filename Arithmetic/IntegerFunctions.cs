@@ -29,7 +29,6 @@ namespace Arithmetic
                     break;
                 }
             }
-
             if (type==GCD)
             {
                 return a / (LCM / b);

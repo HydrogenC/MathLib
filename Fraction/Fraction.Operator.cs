@@ -55,5 +55,53 @@ namespace Fraction
                 return true;
             }
         }
+
+        public static Boolean operator <(Fraction a,Fraction b)
+        {
+            if ((Decimal)a < (Decimal)b)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public static Boolean operator >(Fraction a, Fraction b)
+        {
+            if ((Decimal)a > (Decimal)b)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public static Boolean operator <=(Fraction a, Fraction b)
+        {
+            if ((Decimal)a <= (Decimal)b)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public static Boolean operator >=(Fraction a, Fraction b)
+        {
+            if ((Decimal)a >= (Decimal)b)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

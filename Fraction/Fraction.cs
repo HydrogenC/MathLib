@@ -25,9 +25,9 @@ namespace Fraction
         }
         public Fraction(Fraction numer, Fraction deno)
         {
-            BigInteger lcm = Arithmetic.IntegerFunctions.GetLCMGCD(numer.Numerator, deno.Numerator, Arithmetic.IntegerFunctions.LCM);
+            BigInteger lcm = Arithmetic.IntegerFunctions.GetLCMGCD(numer.Denominator, deno.Denominator, Arithmetic.IntegerFunctions.LCM);
             numerator = numer.Numerator * (lcm / numer.Denominator);
-            denominator = deno.Denominator * (lcm / deno.Denominator);
+            denominator = deno.Numerator * (lcm / deno.Denominator);
             Adjust();
             Reduct();
         }
@@ -68,9 +68,9 @@ namespace Fraction
         {
             Fraction t1 = (Fraction)numer;
             Fraction t2 = (Fraction)deno;
-            BigInteger lcm = Arithmetic.IntegerFunctions.GetLCMGCD(t1.Numerator, t2.Numerator, Arithmetic.IntegerFunctions.LCM);
+            BigInteger lcm = Arithmetic.IntegerFunctions.GetLCMGCD(t1.Denominator, t2.Denominator, Arithmetic.IntegerFunctions.LCM);
             numerator = t1.Numerator * (lcm / t1.Denominator);
-            denominator = t2.Denominator * (lcm / t2.Denominator);
+            denominator = t2.Numerator * (lcm / t2.Denominator);
             Adjust();
             Reduct();
         }
@@ -78,9 +78,9 @@ namespace Fraction
         public Fraction(Decimal numer, Fraction deno)
         {
             Fraction t1 = (Fraction)numer;
-            BigInteger lcm = Arithmetic.IntegerFunctions.GetLCMGCD(t1.Numerator, deno.Numerator, Arithmetic.IntegerFunctions.LCM);
+            BigInteger lcm = Arithmetic.IntegerFunctions.GetLCMGCD(t1.Denominator, deno.Denominator, Arithmetic.IntegerFunctions.LCM);
             numerator = t1.Numerator * (lcm / t1.Denominator);
-            denominator = deno.Denominator * (lcm / deno.Denominator);
+            denominator = deno.Numerator * (lcm / deno.Denominator);
             Adjust();
             Reduct();
         }
@@ -88,9 +88,9 @@ namespace Fraction
         public Fraction(Fraction numer, Decimal deno)
         {
             Fraction t2 = (Fraction)deno;
-            BigInteger lcm = Arithmetic.IntegerFunctions.GetLCMGCD(numer.Numerator, t2.Numerator, Arithmetic.IntegerFunctions.LCM);
+            BigInteger lcm = Arithmetic.IntegerFunctions.GetLCMGCD(numer.Denominator, t2.Denominator, Arithmetic.IntegerFunctions.LCM);
             numerator = numer.Numerator * (lcm / numer.Denominator);
-            denominator = t2.Denominator * (lcm / t2.Denominator);
+            denominator = t2.Numerator * (lcm / t2.Denominator);
             Adjust();
             Reduct();
         }
