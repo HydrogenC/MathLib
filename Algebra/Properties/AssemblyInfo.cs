@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Algebra")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("LZ-AHS")]
+[assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Algebra")]
-[assembly: AssemblyCopyright("Copyright ©  2017")]
+[assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // 如果此项目向 COM 公开，则下列 GUID 用于类型库的 ID
-[assembly: Guid("052c5b13-c6b8-47e2-a0ee-60cbc3fc134c")]
+[assembly: Guid("0a564f51-a2db-4267-a7eb-0cbfe32127c5")]
 
 // 程序集的版本信息由下列四个值组成: 
 //

@@ -4,14 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{052C5B13-C6B8-47E2-A0EE-60CBC3FC134C}</ProjectGuid>
+    <ProjectGuid>{0A564F51-A2DB-4267-A7EB-0CBFE32127C5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Algebra</RootNamespace>
     <AssemblyName>Algebra</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -43,8 +42,8 @@
   <ItemGroup>
     <Compile Include="Functions.cs" />
     <Compile Include="Monomial.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Pylonomial.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Fraction\Fraction.csproj">

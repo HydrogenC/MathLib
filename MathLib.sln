@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algebra", "Algebra\Algebra.csproj", "{052C5B13-C6B8-47E2-A0EE-60CBC3FC134C}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{6A7EB01D-7504-431B-B30A-40C256EAA4C8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fraction", "Fraction\Fraction.csproj", "{6035406B-90DF-42EC-A6A3-0A8D22D78927}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arithmetic", "Arithmetic\Arithmetic.csproj", "{C22B7C59-43A4-49F1-AF20-880D063C11AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algebra", "Algebra\Algebra.csproj", "{0A564F51-A2DB-4267-A7EB-0CBFE32127C5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{052C5B13-C6B8-47E2-A0EE-60CBC3FC134C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{052C5B13-C6B8-47E2-A0EE-60CBC3FC134C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{052C5B13-C6B8-47E2-A0EE-60CBC3FC134C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{052C5B13-C6B8-47E2-A0EE-60CBC3FC134C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6A7EB01D-7504-431B-B30A-40C256EAA4C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6A7EB01D-7504-431B-B30A-40C256EAA4C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6A7EB01D-7504-431B-B30A-40C256EAA4C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -33,6 +29,10 @@ Global
 		{C22B7C59-43A4-49F1-AF20-880D063C11AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C22B7C59-43A4-49F1-AF20-880D063C11AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C22B7C59-43A4-49F1-AF20-880D063C11AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A564F51-A2DB-4267-A7EB-0CBFE32127C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A564F51-A2DB-4267-A7EB-0CBFE32127C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A564F51-A2DB-4267-A7EB-0CBFE32127C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A564F51-A2DB-4267-A7EB-0CBFE32127C5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
