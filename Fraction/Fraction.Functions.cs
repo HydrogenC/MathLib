@@ -39,9 +39,27 @@ namespace Fraction
             denominator = denominator / gcd;
         }
 
+        private void Adjust()
+        {
+            if (denominator == 0)
+            {
+                throw new DivideByZeroException();
+            }
+            if (denominator < 0)
+            {
+                numerator = -numerator;
+                denominator = -denominator;
+            }
+        }
+
         public Fraction Abs()
         {
             return new Fraction((BigInteger)Math.Abs((Decimal)numerator), denominator);
+        }
+
+        public static Fraction Parse(String fraction)
+        {
+            return new Fraction(fraction);
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -23,6 +24,17 @@ namespace Fraction
         public static explicit operator String(Fraction a)
         {
             return a.ToString();
+        }
+        public static explicit operator Fraction(Decimal a)
+        {
+            Decimal multiplier = 1;
+            while (true)
+            {
+                if (a * multiplier % 1 == 0)
+                {
+
+                }
+            }
         }
     }
 }

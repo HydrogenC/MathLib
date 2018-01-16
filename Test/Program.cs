@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Numerics;
 using static Fraction.Fraction;
 
 namespace Test
