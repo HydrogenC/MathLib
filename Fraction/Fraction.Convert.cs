@@ -13,10 +13,6 @@ namespace Fraction
         {
             return (Decimal)a.Numerator / (Decimal)a.Denominator;
         }
-        public static explicit operator Double(Fraction a)
-        {
-            return (Double)(Decimal)a;
-        }
         public static explicit operator BigInteger(Fraction a)
         {
             return (BigInteger)Math.Floor((Decimal)a);
@@ -25,6 +21,10 @@ namespace Fraction
         {
             return a.ToString();
         }
+        public static explicit operator Double(Fraction a)
+        {
+            return (Double)a.Numerator / (Double)a.Denominator;
+        } 
         public static explicit operator Fraction(Decimal a)
         {
             return new Fraction(a);
@@ -39,7 +39,7 @@ namespace Fraction
         }
         public static explicit operator Fraction(Double a)
         {
-            return new Fraction((Decimal)a);
+            return new Fraction(a);
         }
     }
 }

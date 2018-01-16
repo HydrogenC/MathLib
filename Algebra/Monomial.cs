@@ -6,7 +6,7 @@ namespace Algebra
     public class Monomial
     {
         private readonly List<Char> moLetters = new List<Char>();
-        private Decimal moCoefficient;
+        private Fraction.Fraction moCoefficient;
 
         public Monomial()
         {
@@ -24,7 +24,7 @@ namespace Algebra
             }
         }
 
-        public Monomial(Decimal coefficient, String letters)
+        public Monomial(Fraction.Fraction coefficient, String letters)
         {
             moCoefficient = coefficient;
             foreach (Char i in letters)
@@ -33,24 +33,24 @@ namespace Algebra
             }
         }
 
-        public Monomial(Decimal coefficient, List<Char> letters)
+        public Monomial(Fraction.Fraction coefficient, List<Char> letters)
         {
             moCoefficient = coefficient;
             moLetters = letters;
         }
 
-        public Monomial(Decimal coefficient, Char[] letters)
+        public Monomial(Fraction.Fraction coefficient, Char[] letters)
         {
             moCoefficient = coefficient;
             moLetters = new List<Char>(letters);
         }
 
-        public Decimal AbsCoefficient
+        public Fraction.Fraction AbsCoefficient
         {
-            get => Math.Abs(moCoefficient);
+            get => moCoefficient.Abs();
         }
 
-        public Decimal Coefficient
+        public Fraction.Fraction Coefficient
         {
             get => moCoefficient;
             set => moCoefficient = value;
@@ -74,10 +74,10 @@ namespace Algebra
                 switch (value)
                 {
                     case '+':
-                        moCoefficient = Math.Abs(moCoefficient);
+                        moCoefficient = moCoefficient.Abs();
                         break;
                     case '-':
-                        moCoefficient = -Math.Abs(moCoefficient);
+                        moCoefficient = -moCoefficient.Abs();
                         break;
                     default:
                         throw new Exception("Invaild operator! ");

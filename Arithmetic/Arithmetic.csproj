@@ -44,11 +44,5 @@
     <Compile Include="IntegerFunctions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Algebra\Algebra.csproj">
-      <Project>{052c5b13-c6b8-47e2-a0ee-60cbc3fc134c}</Project>
-      <Name>Algebra</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

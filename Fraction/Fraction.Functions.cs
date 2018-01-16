@@ -16,20 +16,20 @@ namespace Fraction
 
         public Fraction Sqrt()
         {
-            Double a = Double.Parse(numerator.ToString());
-            Double b = Double.Parse(denominator.ToString());
-            a = Math.Floor(Math.Sqrt(a));
-            b = Math.Floor(Math.Sqrt(b));
-            return new Fraction(BigInteger.Parse(a.ToString()), BigInteger.Parse(b.ToString()));
+            Decimal a = (Decimal)numerator;
+            Decimal b = (Decimal)denominator;
+            a = Decimal.Floor((Decimal)Math.Sqrt((Double)a));
+            b = Decimal.Floor((Decimal)Math.Sqrt((Double)b));
+            return new Fraction((BigInteger)a, (BigInteger)b);
         }
 
         public Fraction Pow(Decimal times)
         {
-            Double a = Double.Parse(numerator.ToString());
-            Double b = Double.Parse(denominator.ToString());
-            a = Math.Floor(Math.Pow(a, (Double)times));
-            b = Math.Floor(Math.Pow(b, (Double)times));
-            return new Fraction(BigInteger.Parse(a.ToString()), BigInteger.Parse(b.ToString()));
+            Decimal a = (Decimal)numerator;
+            Decimal b = (Decimal)denominator;
+            a = (Decimal)Math.Floor(Math.Pow((Double)a,(Double)times));
+            b = (Decimal)Math.Floor(Math.Pow((Double)b,(Double)times));
+            return new Fraction((BigInteger)a, (BigInteger)b);
         }
 
         private void Reduct()

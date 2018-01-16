@@ -135,6 +135,25 @@ namespace Fraction
             denominator = 1;
         }
 
+        public Fraction(Double number)
+        {
+            Double multiplier = 1;
+            while (true)
+            {
+                if (number * multiplier % 1 == 0)
+                {
+                    numerator = (BigInteger)(number * multiplier);
+                    denominator = (BigInteger)multiplier;
+                    break;
+                }
+                else
+                {
+                    multiplier *= 10;
+                }
+            }
+            Reduct();
+        }
+
         public BigInteger Numerator
         {
             get => numerator;

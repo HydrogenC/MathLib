@@ -8,7 +8,7 @@ namespace Test
     {
         static void Main(string[] args)
         {
-            Fraction.Fraction fraction = new Fraction.Fraction((Decimal)2,new Fraction.Fraction("2/3"));
+            Fraction.Fraction fraction = (Fraction.Fraction)"5/1";
             Console.Write((Decimal)fraction);
             Console.ReadKey();
         }

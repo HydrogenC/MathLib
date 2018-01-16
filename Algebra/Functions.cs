@@ -5,7 +5,7 @@ namespace Algebra
 {
     public class Functions
     {
-        public static Decimal OutputNumbers(String input, List<Char> output)
+        public static Fraction.Fraction OutputNumbers(String input, List<Char> output)
         {
             const String list = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
             String temp = input;
@@ -18,7 +18,7 @@ namespace Algebra
                 }
             }
 
-            return Decimal.Parse(temp);
+            return Fraction.Fraction.Parse(temp);
         }
     }
 }
