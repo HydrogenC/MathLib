@@ -21,16 +21,17 @@ namespace Algebra
             {
                 if (input.Contains(list[(Int32)i].ToString()))
                 {
-                    if (list[(Int32)i + 1] == '^')
+                    Int64 t = input.IndexOf(list[(Int32)i]);
+                    if (input[(Int32)t + 1].ToString() == @"^")
                     {
                         for(Int64 j = 4; j < list.Length-i; j += 1)
                         {
-                            if (m.IsMatch(input.Substring((Int32)i, (Int32)j)))
+                            if (m.IsMatch(input.Substring((Int32)t, (Int32)j)))
                             {
-                                Match f = Regex.Match(input.Substring((Int32)i, (Int32)j), parttern);
+                                Match f = Regex.Match(input.Substring((Int32)t, (Int32)j), parttern);
                                 BigInteger bigInteger = BigInteger.Parse(f.Groups[0].Value);
                                 output.Add(new Letter(list[(Int32)i], bigInteger));
-                                input = input.Replace(input.Substring((Int32)i, (Int32)j), "");
+                                input = input.Replace(input.Substring((Int32)t, (Int32)j), "");
                                 break;
                             }
                         }
