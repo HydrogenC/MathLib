@@ -26,12 +26,13 @@ namespace Algebra
                     {
                         for(Int64 j = 4; j < list.Length-i; j += 1)
                         {
-                            if (m.IsMatch(input.Substring((Int32)t, (Int32)j)))
+                            String temp = input.Substring((Int32)t, (Int32)j);
+                            if (m.IsMatch(temp))
                             {
-                                Match f = Regex.Match(input.Substring((Int32)t, (Int32)j), parttern);
+                                Match f = Regex.Match(temp, parttern);
                                 BigInteger bigInteger = BigInteger.Parse(f.Groups[0].Value);
                                 output.Add(new Letter(list[(Int32)i], bigInteger));
-                                input = input.Replace(input.Substring((Int32)t, (Int32)j), "");
+                                input = input.Replace(temp, "");
                                 break;
                             }
                         }
