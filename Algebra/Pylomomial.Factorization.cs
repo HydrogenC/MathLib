@@ -28,26 +28,26 @@ namespace Algebra
                         {
                             SpliedNumber ti=i, tj=j;
                             String sign = "";
-                            if (ti.num1 < 0 && tj.num2 < 0) 
+                            if (ti.num1 < 0 && ti.num2 < 0) 
                             {
                                 ti.num1 = -ti.num1;
                                 ti.num2 = -ti.num2;
                                 tj.num1 = -tj.num1;
                                 tj.num2 = -tj.num2;
                             }
-                            else if(ti.num1<0 && tj.num2 > 0)
+                            else if(ti.num1<0 && ti.num2 > 0)
                             {
                                 ti.num1 = -ti.num1;
-                                ti.num2 = -ti.num2;
+                                tj.num1 = -tj.num1;
                                 sign = "-";
                             }
-                            else if (ti.num1 > 0 && tj.num2 < 0)
+                            else if (ti.num1 > 0 && ti.num2 < 0)
                             {
-                                tj.num1 = -tj.num1;
+                                ti.num2 = -ti.num2;
                                 tj.num2 = -tj.num2;
                                 sign = "-";
                             }
-                            Console.WriteLine(sign + "(" + (ti.num1==1?"":ti.num1.ToString()) + "x" + (ti.num2 < 0 ? ti.num2.ToString() : "+" + ti.num2.ToString()) + ")(" + (tj.num2 == 1 ? "" : tj.num2.ToString()) + "x" + (tj.num1 < 0 ? tj.num1.ToString() : "+" + tj.num1.ToString()) + ")");
+                            Console.WriteLine(sign + "(" + (ti.num1==1?"":ti.num1.ToString()) + "x" + (tj.num1 < 0 ? tj.num1.ToString() : "+" + tj.num1.ToString()) + ")(" + (ti.num2 == 1 ? "" : ti.num2.ToString()) + "x" + (tj.num2 < 0 ? tj.num2.ToString() : "+" + tj.num2.ToString()) + ")");
                             return true;
                         }
                     }
