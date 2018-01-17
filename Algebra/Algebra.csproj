@@ -41,10 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Pylomomial.Factorization.cs" />
     <Compile Include="Functions.cs" />
     <Compile Include="Monomial.cs" />
     <Compile Include="Pylonomial.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Pylonomial.Functions.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Fraction\Fraction.csproj">

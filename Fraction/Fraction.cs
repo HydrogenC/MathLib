@@ -48,7 +48,7 @@ namespace Fraction
 
         public Fraction(Decimal numer, BigInteger deno)
         {
-            Fraction temp = (Fraction)numer;
+            Fraction temp = numer;
             denominator = deno * temp.Denominator;
             numerator = temp.Numerator;
             Adjust();
@@ -57,7 +57,7 @@ namespace Fraction
 
         public Fraction(BigInteger numer, Decimal deno)
         {
-            Fraction temp = (Fraction)deno;
+            Fraction temp = deno;
             denominator = temp.Numerator;
             numerator = numer * temp.Denominator;
             Adjust();
@@ -66,8 +66,8 @@ namespace Fraction
 
         public Fraction(Decimal numer, Decimal deno)
         {
-            Fraction t1 = (Fraction)numer;
-            Fraction t2 = (Fraction)deno;
+            Fraction t1 = numer;
+            Fraction t2 = deno;
             BigInteger lcm = Arithmetic.IntegerFunctions.GetLCMGCD(t1.Denominator, t2.Denominator, Arithmetic.IntegerFunctions.LCM);
             numerator = t1.Numerator * (lcm / t1.Denominator);
             denominator = t2.Numerator * (lcm / t2.Denominator);
@@ -77,7 +77,7 @@ namespace Fraction
 
         public Fraction(Decimal numer, Fraction deno)
         {
-            Fraction t1 = (Fraction)numer;
+            Fraction t1 = numer;
             BigInteger lcm = Arithmetic.IntegerFunctions.GetLCMGCD(t1.Denominator, deno.Denominator, Arithmetic.IntegerFunctions.LCM);
             numerator = t1.Numerator * (lcm / t1.Denominator);
             denominator = deno.Numerator * (lcm / deno.Denominator);
@@ -87,7 +87,7 @@ namespace Fraction
 
         public Fraction(Fraction numer, Decimal deno)
         {
-            Fraction t2 = (Fraction)deno;
+            Fraction t2 = deno;
             BigInteger lcm = Arithmetic.IntegerFunctions.GetLCMGCD(numer.Denominator, t2.Denominator, Arithmetic.IntegerFunctions.LCM);
             numerator = numer.Numerator * (lcm / numer.Denominator);
             denominator = t2.Numerator * (lcm / t2.Denominator);
@@ -97,13 +97,24 @@ namespace Fraction
 
         public Fraction(String frac)
         {
-            for (Int64 i = 0; i < frac.Length; i += 1)
+            for (BigInteger i = 0; i < frac.Length; i += 1)
             {
                 if (frac[(Int32)i] == '/')
                 {
                     numerator = BigInteger.Parse(frac.Substring(0, (Int32)i));
                     denominator = BigInteger.Parse(frac.Substring((Int32)i + 1));
                     break;
+                }
+                if (i == frac.Length - 1)
+                {
+                    try
+                    {
+                        numerator = BigInteger.Parse(frac);
+                    }catch(Exception e)
+                    {
+                        numerator = 1;
+                    }
+                    denominator = 1;
                 }
             }
             Adjust();

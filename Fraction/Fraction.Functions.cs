@@ -34,9 +34,12 @@ namespace Fraction
 
         private void Reduct()
         {
-            BigInteger gcd = Arithmetic.IntegerFunctions.GetLCMGCD(numerator, denominator, Arithmetic.IntegerFunctions.GCD);
-            numerator = numerator / gcd;
-            denominator = denominator / gcd;
+            if (numerator != 0)
+            {
+                BigInteger gcd = Arithmetic.IntegerFunctions.GetLCMGCD(numerator, denominator, Arithmetic.IntegerFunctions.GCD);
+                numerator = numerator / gcd;
+                denominator = denominator / gcd;
+            }
         }
 
         private void Adjust()

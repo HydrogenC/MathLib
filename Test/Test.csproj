@@ -51,6 +51,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Algebra\Algebra.csproj">
+      <Project>{0a564f51-a2db-4267-a7eb-0cbfe32127c5}</Project>
+      <Name>Algebra</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Arithmetic\Arithmetic.csproj">
       <Project>{c22b7c59-43a4-49f1-af20-880d063c11ad}</Project>
       <Name>Arithmetic</Name>

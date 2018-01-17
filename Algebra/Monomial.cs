@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Numerics;
 using System.Collections.Generic;
 
 namespace Algebra
@@ -16,7 +17,18 @@ namespace Algebra
         {
             if (monomial.Length > 0)
             {
-                moCoefficient = Functions.OutputNumbers(monomial, moLetters);
+                if (Functions.ContainsLetters(monomial))
+                {
+                    moCoefficient = Functions.OutputNumbers(monomial, ref moLetters);
+                }
+                else
+                {
+                    Decimal temp = Decimal.Parse(monomial);
+                    if (temp != 0)
+                    {
+                        moCoefficient = temp;
+                    }
+                }
             }
             else
             {
@@ -60,7 +72,7 @@ namespace Algebra
         {
             get
             {
-                if (moCoefficient < 0)
+                if (moCoefficient < (BigInteger)0)
                 {
                     return '-';
                 }
@@ -102,21 +114,6 @@ namespace Algebra
         public List<Char> Letters
         {
             get => moLetters;
-        }
-
-        public Boolean ContainsLetter
-        {
-            get
-            {
-                if (moLetters.Count == 0)
-                {
-                    return false;
-                }
-                else
-                {
-                    return true;
-                }
-            }
         }
     }
 }
