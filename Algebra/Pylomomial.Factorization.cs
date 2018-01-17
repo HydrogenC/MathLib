@@ -13,7 +13,7 @@ namespace Algebra
         {
             return new Pylonomial();
         }
-        public void Factorization()
+        public Boolean Factorization()
         {
             if (moList.Count == 3)
             {
@@ -26,11 +26,33 @@ namespace Algebra
                     {
                         if ((i.num1 * j.num2 + i.num2 * j.num1) == (BigInteger)moList[1].Coefficient)
                         {
-                            Console.WriteLine("("+i.num1+"x+"+j.num1+")("+i.num2+"x+"+j.num2+")");
-                            return;
+                            SpliedNumber ti=i, tj=j;
+                            String sign = "";
+                            if (ti.num1 < 0 && tj.num2 < 0) 
+                            {
+                                ti.num1 = -ti.num1;
+                                ti.num2 = -ti.num2;
+                                tj.num1 = -tj.num1;
+                                tj.num2 = -tj.num2;
+                            }
+                            else if(ti.num1<0 && tj.num2 > 0)
+                            {
+                                ti.num1 = -ti.num1;
+                                ti.num2 = -ti.num2;
+                                sign = "-";
+                            }
+                            else if (ti.num1 > 0 && tj.num2 < 0)
+                            {
+                                tj.num1 = -tj.num1;
+                                tj.num2 = -tj.num2;
+                                sign = "-";
+                            }
+                            Console.WriteLine(sign + "(" + (ti.num1==1?"":ti.num1.ToString()) + "x" + (ti.num2 < 0 ? ti.num2.ToString() : "+" + ti.num2.ToString()) + ")(" + (tj.num2 == 1 ? "" : tj.num2.ToString()) + "x" + (tj.num1 < 0 ? tj.num1.ToString() : "+" + tj.num1.ToString()) + ")");
+                            return true;
                         }
                     }
                 }
+                return false;
             }
             else
             {
