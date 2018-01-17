@@ -9,23 +9,19 @@ namespace Fraction
 {
     partial class Fraction
     {
-        public static explicit operator Decimal(Fraction a)
+        public static implicit operator Decimal(Fraction a)
         {
             return (Decimal)a.Numerator / (Decimal)a.Denominator;
         }
         public static explicit operator BigInteger(Fraction a)
         {
-            return (BigInteger)Math.Floor((Decimal)a);
+            return (BigInteger)Math.Floor(a);
         }
         public static explicit operator String(Fraction a)
         {
             return a.ToString();
         }
-        public static explicit operator Double(Fraction a)
-        {
-            return (Double)a.Numerator / (Double)a.Denominator;
-        } 
-        public static explicit operator Fraction(Decimal a)
+        public static implicit operator Fraction(Decimal a)
         {
             return new Fraction(a);
         }
@@ -34,10 +30,6 @@ namespace Fraction
             return new Fraction(a);
         }
         public static explicit operator Fraction(BigInteger a)
-        {
-            return new Fraction(a);
-        }
-        public static explicit operator Fraction(Double a)
         {
             return new Fraction(a);
         }

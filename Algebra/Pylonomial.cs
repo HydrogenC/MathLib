@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Numerics;
 
 namespace Algebra
 {
@@ -20,10 +21,10 @@ namespace Algebra
                 pylonomial = "+" + pylonomial;
             }
             List<String> temp=new List<String>();
-            Int64 previousOperator = 0;
-            for (Int64 i = 1; i < pylonomial.Length; i += 1)
+            BigInteger previousOperator = 0;
+            for (BigInteger i = 1; i < pylonomial.Length; i += 1)
             {
-                if (pylonomial[(Int16) i].Equals('+')||pylonomial[(Int16) i].Equals('-'))
+                if (pylonomial[(Int32) i].Equals('+')||pylonomial[(Int16) i].Equals('-'))
                 {
                     if (i - previousOperator >= 2)
                     {
@@ -44,14 +45,14 @@ namespace Algebra
             get => moList;
         }
 
-        public Int64 Round()
+        public BigInteger Round()
         {
-            for (Int64 i = 1;; i += 1)
+            for (BigInteger i = 1;; i += 1)
             {
                 Boolean isInteger = true;
                 foreach (var j in Monomials)
                 {
-                    if ((i * j.Coefficient) % 1 != 0)
+                    if (((Decimal)i * (Decimal)j.Coefficient) % 1 != 0)
                     {
                         isInteger = false;
                     }
