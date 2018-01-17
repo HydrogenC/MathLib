@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Numerics;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace Algebra
 {
@@ -11,19 +12,37 @@ namespace Algebra
     }
     public class Functions
     {
-        public static Fraction.Fraction OutputNumbers(String input, ref List<Char> output)
+        public static Fraction.Fraction OutputNumbers(String input, ref List<Letter> output)
         {
             const String list = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            String temp = input;
-            foreach (Char i in list)
+            Regex m = new Regex(@"^[A-Za-z]\^(\d+)\^$");
+            String parttern = @"\d+";
+            for (BigInteger i=0;i<list.Length;i+=1)
             {
-                if (temp.Contains(i.ToString()))
+                if (input.Contains(list[(Int32)i].ToString()))
                 {
-                    output.Add(i);
-                    temp=temp.Replace(i.ToString(), "");
+                    if (list[(Int32)i + 1] == '^')
+                    {
+                        for(Int64 j = 4; j < list.Length-i; j += 1)
+                        {
+                            if (m.IsMatch(input.Substring((Int32)i, (Int32)j)))
+                            {
+                                Match f = Regex.Match(input.Substring((Int32)i, (Int32)j), parttern);
+                                BigInteger bigInteger = BigInteger.Parse(f.Groups[0].Value);
+                                output.Add(new Letter(list[(Int32)i], bigInteger));
+                                input = input.Replace(input.Substring((Int32)i, (Int32)j), "");
+                                break;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        output.Add(new Letter(list[(Int32)i]));
+                        input = input.Replace(i.ToString(), "");
+                    }
                 }
             }
-            return Fraction.Fraction.Parse(temp);
+            return Fraction.Fraction.Parse(input);
         }
 
         public static Boolean ContainsLetters(String input)

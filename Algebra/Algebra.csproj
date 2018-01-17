@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Letter.cs" />
+    <Compile Include="Product.cs" />
     <Compile Include="Pylomomial.Factorization.cs" />
     <Compile Include="Functions.cs" />
     <Compile Include="Monomial.cs" />

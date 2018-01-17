@@ -4,9 +4,12 @@ using System.Collections.Generic;
 
 namespace Algebra
 {
+    /// <summary>
+    /// Use x^2^ to express x²
+    /// </summary>
     public class Monomial
     {
-        private readonly List<Char> moLetters = new List<Char>();
+        private readonly List<Letter> moLetters = new List<Letter>();
         private Fraction.Fraction moCoefficient;
 
         public Monomial()
@@ -41,20 +44,23 @@ namespace Algebra
             moCoefficient = coefficient;
             foreach (Char i in letters)
             {
-                moLetters.Add(i);
+                moLetters.Add(new Letter(i));
             }
         }
 
         public Monomial(Fraction.Fraction coefficient, List<Char> letters)
         {
             moCoefficient = coefficient;
-            moLetters = letters;
+            foreach(var i in letters)
+            {
+                moLetters.Add(new Letter(i));
+            }
         }
 
-        public Monomial(Fraction.Fraction coefficient, Char[] letters)
+        public Monomial(Fraction.Fraction coefficient, List<Letter> list)
         {
             moCoefficient = coefficient;
-            moLetters = new List<Char>(letters);
+            moLetters = new List<Letter>(list);
         }
 
         public Fraction.Fraction AbsCoefficient
@@ -111,9 +117,44 @@ namespace Algebra
             }
         }
 
-        public List<Char> Letters
+        public String ValueWithSign
+        {
+            get
+            {
+                String m = moCoefficient < (BigInteger)0 ? "-" : "+";
+                if ((Decimal)moCoefficient % 1 == 0)
+                {
+                    m += (BigInteger)moCoefficient;
+                }
+                else
+                {
+                    m += "("+moCoefficient.ToString()+")";
+                }
+                foreach (var i in moLetters)
+                {
+                    m += i.ToString();
+                }
+
+                return m;
+            }
+        }
+
+        public List<Letter> Letters
         {
             get => moLetters;
+        }
+
+        public List<Char> CharLetters
+        {
+            get
+            {
+                List<Char> m = new List<Char>();
+                foreach(var i in moLetters)
+                {
+                    m.Add(i.GetLetter);
+                }
+                return m;
+            }
         }
     }
 }

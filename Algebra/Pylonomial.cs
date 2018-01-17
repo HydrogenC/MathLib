@@ -81,5 +81,43 @@ namespace Algebra
                 }
             }
         }
+
+        public String Value
+        {
+            get
+            {
+                String temp = "";
+                if (!pylonomialOperator)
+                {
+                    ChangeSign();
+                }
+                foreach (var i in moList)
+                {
+                    temp += i.ValueWithSign;
+                }
+                return temp;
+            }
+        }
+
+        public String ValueWithSign
+        {
+            get
+            {
+                String temp="+";
+                if (!pylonomialOperator)
+                {
+                    temp = "-(";
+                }
+                foreach(var i in moList)
+                {
+                    temp += i.ValueWithSign;
+                }
+                if (!pylonomialOperator)
+                {
+                    temp += ")";
+                }
+                return temp;
+            }
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 using System.Numerics;
 
 namespace Test
@@ -7,8 +8,8 @@ namespace Test
     {
         static void Main(string[] args)
         {
-            Algebra.Pylonomial pylonomial = new Algebra.Pylonomial("x+2w-3");
-            pylonomial.Factorization();
+            Algebra.Monomial monomial = new Algebra.Monomial("3x^24^");
+            Console.WriteLine(monomial.Letters[0].Exponent);
             Console.ReadKey();
         }
     }

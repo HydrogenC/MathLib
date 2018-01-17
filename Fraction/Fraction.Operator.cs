@@ -144,7 +144,7 @@ namespace Fraction
 
         public static Fraction operator -(Fraction a)
         {
-            return (BigInteger)0 - a;
+            return new Fraction(-a.Numerator, a.Denominator);
         }
 
         public static Fraction operator +(Fraction a)
