@@ -15,34 +15,23 @@ namespace Algebra
         public static Fraction.Fraction OutputNumbers(String input, ref List<Letter> output)
         {
             const String list = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            Regex m = new Regex(@"^[A-Za-z]\^(\d+)\^$");
-            String parttern = @"\d+";
-            for (Int64 i=0;i<list.Length;i+=1)
+            const String letterWithExp = @"[A-Za-z]\^(\d+)\^";
+            String patternLetter = @"[A-Za-z]{1}";
+            String patternExp = @"\d+";
+            Match match = Regex.Match(input, letterWithExp);
+            for(Int64 i = 0; i < match.Groups.Count; i += 1)
             {
-                if (input.Contains(list[(Int32)i].ToString()))
-                {
-                    Int64 t = input.IndexOf(list[(Int32)i]);
-                    if (input[(Int32)t + 1].ToString() == @"^")
-                    {
-                        for(Int64 j = 4; j < list.Length-i; j += 1)
-                        {
-                            String temp = input.Substring((Int32)t, (Int32)j);
-                            if (m.IsMatch(temp))
-                            {
-                                Match f = Regex.Match(temp, parttern);
-                                Int64 int64 = Int64.Parse(f.Groups[0].Value);
-                                output.Add(new Letter(list[(Int32)i], int64));
-                                input = input.Replace(temp, "");
-                                break;
-                            }
-                        }
-                    }
-                    else
-                    {
-                        output.Add(new Letter(list[(Int32)i]));
-                        input = input.Replace(i.ToString(), "");
-                    }
-                }
+                Match m = Regex.Match(match.Groups[(Int32)i].Value, patternExp);
+                Int64 exp = Int64.Parse(m.Groups[0].Value);
+                input = input.Replace(match.Groups[(Int32)i].Value, "");
+                Match ma = Regex.Match(match.Groups[(Int32)i].Value, patternLetter);
+                output.Add(new Letter(ma.Groups[0].Value[0],exp));
+            }
+            Match mat = Regex.Match(input, patternLetter);
+            for(Int64 i = 0; i < mat.Groups.Count; i += 1)
+            {
+                output.Add(new Letter(mat.Groups[(Int32)i].Value[0]));
+                input = input.Replace(mat.Groups[(Int32)i].Value, "");
             }
             return Fraction.Fraction.Parse(input);
         }
