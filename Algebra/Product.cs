@@ -5,6 +5,7 @@ namespace Algebra
 {
     public class Product
     {
+        Boolean isPositive = true;
         List<Monomial> mList = new List<Monomial>();
         List<Pylonomial> pList = new List<Pylonomial>();
         public Product()
@@ -42,21 +43,36 @@ namespace Algebra
             get => mList;
         }
 
-        public String Value
+        public override String ToString()
         {
-            get
+            return ToString(false);
+        }
+
+        public String ToString(Boolean withSign)
+        {
+            String temp = "";
+            if (isPositive&&withSign)
             {
-                String temp = "";
-                foreach(var i in mList)
-                {
-                    temp += i.ToString(false);
-                }
-                foreach (var i in pList)
-                {
-                    temp += "("+i.Value+")";
-                }
-                return temp;
+                temp = "+";
             }
+            if (!isPositive)
+            {
+                temp = "-";
+            }
+            foreach (var i in mList)
+            {
+                temp += i.ToString(false);
+            }
+            foreach (var i in pList)
+            {
+                temp += "(" + i.Value + ")";
+            }
+            return temp;
+        }
+
+        public Boolean IsPositive {
+            get => isPositive;
+            set => isPositive = value;
         }
     }
 }

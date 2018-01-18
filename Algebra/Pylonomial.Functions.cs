@@ -17,6 +17,7 @@ namespace Algebra
             foreach (var i in moList)
             {
                 i.Coefficient = -(i.Coefficient);
+                i.Coefficient.Adjust();
             }
         }
     }

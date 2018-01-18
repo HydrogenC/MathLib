@@ -141,6 +141,18 @@ namespace Fraction
 
         public Fraction(String frac)
         {
+            if (frac == "+")
+            {
+                denominator = 1;
+                numerator = 1;
+                return;
+            }
+            if (frac == "-")
+            {
+                denominator = 1;
+                numerator = -1;
+                return;
+            }
             for (Int64 i = 0; i < frac.Length; i += 1)
             {
                 if (frac[(Int32)i] == '/')

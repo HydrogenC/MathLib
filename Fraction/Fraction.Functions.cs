@@ -39,7 +39,7 @@ namespace Fraction
             }
         }
 
-        private void Adjust()
+        public void Adjust()
         {
             if (denominator == 0)
             {

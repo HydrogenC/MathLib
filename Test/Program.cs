@@ -6,10 +6,10 @@ namespace Test
     {
         static void Main(string[] args)
         {
-            Algebra.Pylonomial pylonomial = new Algebra.Pylonomial("x^2^+x-2");
+            Algebra.Pylonomial pylonomial = new Algebra.Pylonomial("-x^2^+8x-12");
             Algebra.Product product = new Algebra.Product();
-            pylonomial.Factorization(out product);
-            Console.WriteLine(product.Value);
+            Boolean m=pylonomial.Factorization(out product);
+            Console.WriteLine(product.ToString()+m);
             Console.ReadKey();
         }
     }

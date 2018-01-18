@@ -21,6 +21,10 @@ namespace Algebra
             {
                 if (Functions.ContainsLetters(monomial))
                 {
+                    if (!(monomial.StartsWith("+") || monomial.StartsWith("-")))
+                    {
+                        monomial = "+" + monomial;
+                    }
                     moCoefficient = Functions.OutputNumbers(monomial, ref moLetters);
                 }
                 else

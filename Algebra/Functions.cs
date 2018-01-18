@@ -14,7 +14,7 @@ namespace Algebra
         public static Fraction.Fraction OutputNumbers(String input, ref List<Letter> output)
         {
             const String letterWithExp = @"[A-Za-z]\^(\d+)\^";
-            String patternLetter = @"[A-Za-z]{1}";
+            String patternLetter = @"[A-Za-z]";
             String patternExp = @"\d+";
             MatchCollection match = Regex.Matches(input, letterWithExp);
             for (Int64 i = 0; i < match.Count; i += 1)

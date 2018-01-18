@@ -28,7 +28,7 @@ namespace Algebra
                         if ((i.num1 * j.num2 + i.num2 * j.num1) == (Int64)moList[1].Coefficient)
                         {
                             SpliedNumber ti = i, tj = j;
-                            String sign = "";
+                            Boolean sign = true;
                             if (ti.num1 < 0 && ti.num2 < 0)
                             {
                                 ti.num1 = -ti.num1;
@@ -40,15 +40,16 @@ namespace Algebra
                             {
                                 ti.num1 = -ti.num1;
                                 tj.num1 = -tj.num1;
-                                sign = "-";
+                                sign = false;
                             }
                             else if (ti.num1 > 0 && ti.num2 < 0)
                             {
                                 ti.num2 = -ti.num2;
                                 tj.num2 = -tj.num2;
-                                sign = "-";
+                                sign = false;
                             }
                             product = new Product();
+                            product.IsPositive = sign;
                             product.Add(new Pylonomial((ti.num1 == 1 ? "" : ti.num1.ToString()) + letter + (tj.num1 < 0 ? tj.num1.ToString() : "+" + tj.num1.ToString())));
                             product.Add(new Pylonomial((ti.num2 == 1 ? "" : ti.num2.ToString()) + letter + (tj.num2 < 0 ? tj.num2.ToString() : "+" + tj.num2.ToString())));
                             return true;
