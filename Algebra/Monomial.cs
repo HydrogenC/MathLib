@@ -77,7 +77,7 @@ namespace Algebra
         {
             get
             {
-                if (moCoefficient < (Int64)0)
+                if (moCoefficient < 0)
                 {
                     return '-';
                 }

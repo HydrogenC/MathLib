@@ -19,6 +19,11 @@ namespace Fraction
             return a.ToString();
         }
 
+        public static explicit operator Int64(Fraction a)
+        {
+            return (Int64)(a.Numerator / a.Denominator);
+        }
+
         public static implicit operator Fraction(Decimal a)
         {
             return new Fraction(a);

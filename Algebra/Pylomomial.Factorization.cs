@@ -18,14 +18,14 @@ namespace Algebra
                     ChangeSign();
                 }
                 Char letter = moList[0].Letters[0].GetLetter;
-                List<SpliedNumber> list1 = Functions.Split((Int64)(Double)moList[0].Coefficient);
-                List<SpliedNumber> list2 = Functions.Split((Int64)(Double)moList[2].Coefficient);
+                List<SpliedNumber> list1 = Functions.Split((Int64)moList[0].Coefficient);
+                List<SpliedNumber> list2 = Functions.Split((Int64)moList[2].Coefficient);
                 List<Int64> list3 = new List<Int64>();
                 foreach (var i in list1)
                 {
                     foreach (var j in list2)
                     {
-                        if ((i.num1 * j.num2 + i.num2 * j.num1) == (Int64)(Double)moList[1].Coefficient)
+                        if ((i.num1 * j.num2 + i.num2 * j.num1) == (Int64)moList[1].Coefficient)
                         {
                             SpliedNumber ti = i, tj = j;
                             String sign = "";
