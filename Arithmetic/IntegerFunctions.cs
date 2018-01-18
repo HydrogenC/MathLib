@@ -24,7 +24,7 @@ namespace Arithmetic
                     break;
                 }
             }
-            if (type==GCD)
+            if (type == GCD)
             {
                 return a / (LCM / b);
             }
@@ -42,6 +42,21 @@ namespace Arithmetic
         public static Boolean LCM
         {
             get => false;
+        }
+
+        public static String ToSuperscript(String input)
+        {
+            input.Replace('0', '⁰');
+            input.Replace('1', '¹');
+            input.Replace('2', '²');
+            input.Replace('3', '³');
+            input.Replace('4', '⁴');
+            input.Replace('5', '⁵');
+            input.Replace('6', '⁶');
+            input.Replace('7', '⁷');
+            input.Replace('8', '⁸');
+            input.Replace('9', '⁹');
+            return input;
         }
     }
 }

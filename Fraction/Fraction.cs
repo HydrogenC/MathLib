@@ -4,12 +4,12 @@ namespace Fraction
 {
     public partial class Fraction
     {
-        private Int64 denominator=1;
+        private Int64 denominator = 1;
         //The sign symbol is only stored in Numerator
-        private Int64 numerator=0;
+        private Int64 numerator = 0;
         public Fraction()
         {
-            
+
         }
         public Fraction(Int64 numer, Int64 deno)
         {
@@ -88,7 +88,7 @@ namespace Fraction
             Reduct();
         }
 
-        public Fraction(Double numer,Double deno)
+        public Fraction(Double numer, Double deno)
         {
             Fraction t1 = numer;
             Fraction t2 = deno;

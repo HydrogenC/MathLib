@@ -17,12 +17,12 @@ namespace Algebra
 
     public partial class Pylonomial
     {
-        private List<Monomial> moList=new List<Monomial>();
+        private List<Monomial> moList = new List<Monomial>();
         private Boolean pylonomialOperator = PylomialOperator.Plus;
 
         public Pylonomial()
         {
-            
+
         }
 
         public Pylonomial(String pylonomial)
@@ -31,20 +31,20 @@ namespace Algebra
             {
                 pylonomial = "+" + pylonomial;
             }
-            List<String> temp=new List<String>();
+            List<String> temp = new List<String>();
             Int64 previousOperator = 0;
             for (Int64 i = 1; i < pylonomial.Length; i += 1)
             {
-                if (pylonomial[(Int32) i].Equals('+')||pylonomial[(Int32) i].Equals('-'))
+                if (pylonomial[(Int32)i].Equals('+') || pylonomial[(Int32)i].Equals('-'))
                 {
                     if (i - previousOperator >= 2)
                     {
-                        temp.Add(pylonomial.Substring((Int32) previousOperator, (Int32) i - (Int32) previousOperator));
+                        temp.Add(pylonomial.Substring((Int32)previousOperator, (Int32)i - (Int32)previousOperator));
                         previousOperator = i;
                     }
                 }
             }
-            temp.Add(pylonomial.Substring((Int32) previousOperator, pylonomial.Length - (Int32) previousOperator));
+            temp.Add(pylonomial.Substring((Int32)previousOperator, pylonomial.Length - (Int32)previousOperator));
             foreach (var i in temp)
             {
                 moList.Add(new Monomial(i));
@@ -58,7 +58,7 @@ namespace Algebra
 
         public Int64 Round()
         {
-            for (Int64 i = 1;; i += 1)
+            for (Int64 i = 1; ; i += 1)
             {
                 Boolean isInteger = true;
                 foreach (var j in Monomials)
@@ -101,12 +101,12 @@ namespace Algebra
         {
             get
             {
-                String temp="+";
+                String temp = "+";
                 if (!pylonomialOperator)
                 {
                     temp = "-(";
                 }
-                foreach(var i in moList)
+                foreach (var i in moList)
                 {
                     temp += i.ValueWithSign;
                 }

@@ -50,7 +50,7 @@ namespace Algebra
         public Monomial(Fraction.Fraction coefficient, List<Char> letters)
         {
             moCoefficient = coefficient;
-            foreach(var i in letters)
+            foreach (var i in letters)
             {
                 moLetters.Add(new Letter(i));
             }
@@ -102,18 +102,39 @@ namespace Algebra
             }
         }
 
-        public String Value
+        public override String ToString()
         {
-            get
-            {
-                String m = moCoefficient.ToString();
-                foreach (var i in moLetters)
-                {
-                    m += i.ToString();
-                }
+            return ToString(false, false);
+        }
 
-                return m;
+        public String ToString(Boolean containsSign, Boolean useFraction = false)
+        {
+            String temp = "";
+            if (useFraction)
+            {
+                if (moCoefficient.Numerator < 0)
+                {
+                    temp += "-(" + moCoefficient.Abs().ToString() + ")";
+                }
+                else
+                {
+                    temp += "(" + moCoefficient.Abs().ToString() + ")";
+                }
+                
             }
+            else
+            {
+                temp+=((Decimal)moCoefficient).ToString();
+            }
+            if (containsSign && (!temp.StartsWith("-"))) 
+            {
+                temp = "+" + temp;
+            }
+            foreach (var i in moLetters)
+            {
+                temp += i.GetLetter + Arithmetic.IntegerFunctions.ToSuperscript(i.Exponent.ToString());
+            }
+            return temp;
         }
 
         public String ValueWithSign
@@ -127,7 +148,7 @@ namespace Algebra
                 }
                 else
                 {
-                    m += "("+moCoefficient.ToString()+")";
+                    m += "(" + moCoefficient.ToString() + ")";
                 }
                 foreach (var i in moLetters)
                 {
@@ -148,7 +169,7 @@ namespace Algebra
             get
             {
                 List<Char> m = new List<Char>();
-                foreach(var i in moLetters)
+                foreach (var i in moLetters)
                 {
                     m.Add(i.GetLetter);
                 }

@@ -10,17 +10,19 @@ namespace Algebra
         {
             letter = lLetter;
         }
-        public Letter(Char lLetter,Int64 exp)
+        public Letter(Char lLetter, Int64 exp)
         {
             letter = lLetter;
             exponent = exp;
         }
 
-        public char GetLetter {
+        public char GetLetter
+        {
             get => letter;
             set => letter = value;
         }
-        public Int64 Exponent {
+        public Int64 Exponent
+        {
             get => exponent;
             set => exponent = value;
         }

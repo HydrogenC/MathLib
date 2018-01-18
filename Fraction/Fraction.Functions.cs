@@ -11,7 +11,7 @@ namespace Fraction
 
         public Fraction Sqrt()
         {
-            
+
             return new Fraction((Int64)Math.Sqrt(denominator), (Int64)Math.Sqrt(denominator));
         }
 
@@ -23,9 +23,9 @@ namespace Fraction
         public Fraction Pow(Decimal times)
         {
             Decimal a = numerator;
-            Decimal b =denominator;
-            a = (Decimal)Math.Floor(Math.Pow((Double)a,(Double)times));
-            b = (Decimal)Math.Floor(Math.Pow((Double)b,(Double)times));
+            Decimal b = denominator;
+            a = (Decimal)Math.Floor(Math.Pow((Double)a, (Double)times));
+            b = (Decimal)Math.Floor(Math.Pow((Double)b, (Double)times));
             return new Fraction((Int64)a, (Int64)b);
         }
 
@@ -54,7 +54,7 @@ namespace Fraction
 
         public Fraction Abs()
         {
-            return new Fraction((Int64)Math.Abs((Decimal)numerator), denominator);
+            return new Fraction(Math.Abs(numerator), denominator);
         }
 
         public static Fraction Parse(String fraction)

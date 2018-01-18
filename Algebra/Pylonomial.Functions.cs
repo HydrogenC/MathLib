@@ -14,7 +14,7 @@ namespace Algebra
             {
                 pylonomialOperator = PylomialOperator.Plus;
             }
-            foreach(var i in moList)
+            foreach (var i in moList)
             {
                 i.Coefficient = -(i.Coefficient);
             }
