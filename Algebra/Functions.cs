@@ -18,20 +18,18 @@ namespace Algebra
             const String letterWithExp = @"[A-Za-z]\^(\d+)\^";
             String patternLetter = @"[A-Za-z]{1}";
             String patternExp = @"\d+";
-            Match match = Regex.Match(input, letterWithExp);
-            for(Int64 i = 0; i < match.Groups.Count; i += 1)
+            MatchCollection match = Regex.Matches(input, letterWithExp);
+            for (Int64 i = 0; i < match.Count; i += 1)
             {
-                Match m = Regex.Match(match.Groups[(Int32)i].Value, patternExp);
-                Int64 exp = Int64.Parse(m.Groups[0].Value);
-                input = input.Replace(match.Groups[(Int32)i].Value, "");
-                Match ma = Regex.Match(match.Groups[(Int32)i].Value, patternLetter);
-                output.Add(new Letter(ma.Groups[0].Value[0],exp));
+                Int64 exp = Int64.Parse(Regex.Match(match[(Int32)i].Value, patternExp).Value);
+                input = input.Replace(match[(Int32)i].Value, "");
+                output.Add(new Letter(Regex.Match(match[(Int32)i].Value, patternLetter).Value[0], exp));
             }
-            Match mat = Regex.Match(input, patternLetter);
-            for(Int64 i = 0; i < mat.Groups.Count; i += 1)
+            MatchCollection matchCollection = Regex.Matches(input, patternLetter);
+            for (Int64 i = 0; i < matchCollection.Count; i += 1)
             {
-                output.Add(new Letter(mat.Groups[(Int32)i].Value[0]));
-                input = input.Replace(mat.Groups[(Int32)i].Value, "");
+                output.Add(new Letter(matchCollection[(Int32)i].Value[0]));
+                input = input.Replace(matchCollection[(Int32)i].Value, "");
             }
             return Fraction.Fraction.Parse(input);
         }
@@ -55,7 +53,7 @@ namespace Algebra
             List<SpliedNumber> temp = new List<SpliedNumber>();
             for (Int64 i = -abs; i <= abs; i += 1)
             {
-                SpliedNumber spliedNumber=new SpliedNumber();
+                SpliedNumber spliedNumber = new SpliedNumber();
                 if (i == 0)
                 {
                     continue;
