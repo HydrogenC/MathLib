@@ -13,9 +13,11 @@ namespace Algebra
         {
             if (moList.Count == 3 && (moList[0].Letters[0].Exponent==2))
             {
+                Boolean sig = true;
                 if (moList[0].Coefficient < 0)
                 {
                     ChangeSign();
+                    sig = false;
                 }
                 Char letter = moList[0].Letters[0].GetLetter;
                 List<SpliedNumber> list1 = Functions.Split((Int64)moList[0].Coefficient);
@@ -49,7 +51,14 @@ namespace Algebra
                                 sign = false;
                             }
                             product = new Product();
-                            product.IsPositive = sign;
+                            if (sig == sign)
+                            {
+                                product.IsPositive = true;
+                            }
+                            else
+                            {
+                                product.IsPositive = false;
+                            }
                             product.Add(new Pylonomial((ti.num1 == 1 ? "" : ti.num1.ToString()) + letter + (tj.num1 < 0 ? tj.num1.ToString() : "+" + tj.num1.ToString())));
                             product.Add(new Pylonomial((ti.num2 == 1 ? "" : ti.num2.ToString()) + letter + (tj.num2 < 0 ? tj.num2.ToString() : "+" + tj.num2.ToString())));
                             return true;
