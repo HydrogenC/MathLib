@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Algebra
 {
-    class Product
+    public class Product
     {
         List<Monomial> mList = new List<Monomial>();
         List<Pylonomial> pList = new List<Pylonomial>();
@@ -47,6 +47,14 @@ namespace Algebra
             get
             {
                 String temp = "";
+                foreach(var i in mList)
+                {
+                    temp += i.ToString(false);
+                }
+                foreach (var i in pList)
+                {
+                    temp += "("+i.Value+")";
+                }
                 return temp;
             }
         }

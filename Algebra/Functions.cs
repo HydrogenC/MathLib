@@ -13,7 +13,6 @@ namespace Algebra
     {
         public static Fraction.Fraction OutputNumbers(String input, ref List<Letter> output)
         {
-            const String list = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
             const String letterWithExp = @"[A-Za-z]\^(\d+)\^";
             String patternLetter = @"[A-Za-z]{1}";
             String patternExp = @"\d+";

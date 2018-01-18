@@ -112,15 +112,7 @@ namespace Algebra
             String temp = "";
             if (useFraction)
             {
-                if (moCoefficient.Numerator < 0)
-                {
-                    temp += "-(" + moCoefficient.Abs().ToString() + ")";
-                }
-                else
-                {
-                    temp += "(" + moCoefficient.Abs().ToString() + ")";
-                }
-                
+                temp += moCoefficient.ToString();
             }
             else
             {
@@ -132,31 +124,16 @@ namespace Algebra
             }
             foreach (var i in moLetters)
             {
-                temp += i.GetLetter + Arithmetic.IntegerFunctions.ToSuperscript(i.Exponent.ToString());
-            }
-            return temp;
-        }
-
-        public String ValueWithSign
-        {
-            get
-            {
-                String m = moCoefficient < 0 ? "-" : "+";
-                if ((Decimal)moCoefficient % 1 == 0)
+                if (i.Exponent == 1)
                 {
-                    m += (Int64)(Double)moCoefficient;
+                    temp += i.GetLetter;
                 }
                 else
                 {
-                    m += "(" + moCoefficient.ToString() + ")";
+                    temp += i.GetLetter + Arithmetic.IntegerFunctions.ToSuperscript(i.Exponent.ToString());
                 }
-                foreach (var i in moLetters)
-                {
-                    m += i.ToString();
-                }
-
-                return m;
             }
+            return temp;
         }
 
         public List<Letter> Letters

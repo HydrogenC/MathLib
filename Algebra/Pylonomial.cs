@@ -56,29 +56,7 @@ namespace Algebra
             get => moList;
         }
 
-        public Int64 Round()
-        {
-            for (Int64 i = 1; ; i += 1)
-            {
-                Boolean isInteger = true;
-                foreach (var j in Monomials)
-                {
-                    if (((Decimal)i * (Decimal)j.Coefficient) % 1 != 0)
-                    {
-                        isInteger = false;
-                    }
-                }
-
-                if (isInteger)
-                {
-                    foreach (var j in Monomials)
-                    {
-                        j.Coefficient *= i;
-                    }
-                    return i;
-                }
-            }
-        }
+        
 
         public String Value
         {
@@ -91,28 +69,7 @@ namespace Algebra
                 }
                 foreach (var i in moList)
                 {
-                    temp += i.ValueWithSign;
-                }
-                return temp;
-            }
-        }
-
-        public String ValueWithSign
-        {
-            get
-            {
-                String temp = "+";
-                if (!pylonomialOperator)
-                {
-                    temp = "-(";
-                }
-                foreach (var i in moList)
-                {
-                    temp += i.ValueWithSign;
-                }
-                if (!pylonomialOperator)
-                {
-                    temp += ")";
+                    temp += i.ToString(true);
                 }
                 return temp;
             }
