@@ -7,8 +7,8 @@ namespace Algebra
 {
     public struct SpliedNumber
     {
-        public BigInteger num1;
-        public BigInteger num2;
+        public Int64 num1;
+        public Int64 num2;
     }
     public class Functions
     {
@@ -17,7 +17,7 @@ namespace Algebra
             const String list = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
             Regex m = new Regex(@"^[A-Za-z]\^(\d+)\^$");
             String parttern = @"\d+";
-            for (BigInteger i=0;i<list.Length;i+=1)
+            for (Int64 i=0;i<list.Length;i+=1)
             {
                 if (input.Contains(list[(Int32)i].ToString()))
                 {
@@ -30,8 +30,8 @@ namespace Algebra
                             if (m.IsMatch(temp))
                             {
                                 Match f = Regex.Match(temp, parttern);
-                                BigInteger bigInteger = BigInteger.Parse(f.Groups[0].Value);
-                                output.Add(new Letter(list[(Int32)i], bigInteger));
+                                Int64 int64 = Int64.Parse(f.Groups[0].Value);
+                                output.Add(new Letter(list[(Int32)i], int64));
                                 input = input.Replace(temp, "");
                                 break;
                             }
@@ -60,11 +60,11 @@ namespace Algebra
             return false;
         }
 
-        public static List<SpliedNumber> Split(BigInteger integer)
+        public static List<SpliedNumber> Split(Int64 integer)
         {
-            BigInteger abs = integer < 0 ? -integer : integer;
+            Int64 abs = integer < 0 ? -integer : integer;
             List<SpliedNumber> temp = new List<SpliedNumber>();
-            for (BigInteger i = -abs; i <= abs; i += 1)
+            for (Int64 i = -abs; i <= abs; i += 1)
             {
                 SpliedNumber spliedNumber=new SpliedNumber();
                 if (i == 0)

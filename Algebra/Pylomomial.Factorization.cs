@@ -17,14 +17,14 @@ namespace Algebra
         {
             if (moList.Count == 3)
             {
-                List<SpliedNumber> list1 = Functions.Split((BigInteger)moList[0].AbsCoefficient);
-                List<SpliedNumber> list2 = Functions.Split((BigInteger)moList[2].Coefficient);
-                List<BigInteger> list3=new List<BigInteger>();
+                List<SpliedNumber> list1 = Functions.Split((Int64)(Double)moList[0].AbsCoefficient);
+                List<SpliedNumber> list2 = Functions.Split((Int64)(Double)moList[2].Coefficient);
+                List<Int64> list3=new List<Int64>();
                 foreach (var i in list1)
                 {
                     foreach(var j in list2)
                     {
-                        if ((i.num1 * j.num2 + i.num2 * j.num1) == (BigInteger)moList[1].Coefficient)
+                        if ((i.num1 * j.num2 + i.num2 * j.num1) == (Int64)(Double)moList[1].Coefficient)
                         {
                             SpliedNumber ti=i, tj=j;
                             String sign = "";

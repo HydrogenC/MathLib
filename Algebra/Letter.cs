@@ -9,13 +9,13 @@ namespace Algebra
 {
     public class Letter
     {
-        private BigInteger exponent = 1;
+        private Int64 exponent = 1;
         private Char letter;
         public Letter(Char lLetter)
         {
             letter = lLetter;
         }
-        public Letter(Char lLetter,BigInteger exp)
+        public Letter(Char lLetter,Int64 exp)
         {
             letter = lLetter;
             exponent = exp;
@@ -25,7 +25,7 @@ namespace Algebra
             get => letter;
             set => letter = value;
         }
-        public BigInteger Exponent {
+        public Int64 Exponent {
             get => exponent;
             set => exponent = value;
         }

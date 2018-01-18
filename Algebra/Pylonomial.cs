@@ -34,8 +34,8 @@ namespace Algebra
                 pylonomial = "+" + pylonomial;
             }
             List<String> temp=new List<String>();
-            BigInteger previousOperator = 0;
-            for (BigInteger i = 1; i < pylonomial.Length; i += 1)
+            Int64 previousOperator = 0;
+            for (Int64 i = 1; i < pylonomial.Length; i += 1)
             {
                 if (pylonomial[(Int32) i].Equals('+')||pylonomial[(Int32) i].Equals('-'))
                 {
@@ -58,9 +58,9 @@ namespace Algebra
             get => moList;
         }
 
-        public BigInteger Round()
+        public Int64 Round()
         {
-            for (BigInteger i = 1;; i += 1)
+            for (Int64 i = 1;; i += 1)
             {
                 Boolean isInteger = true;
                 foreach (var j in Monomials)

@@ -78,7 +78,7 @@ namespace Algebra
         {
             get
             {
-                if (moCoefficient < (BigInteger)0)
+                if (moCoefficient < (Int64)0)
                 {
                     return '-';
                 }
@@ -121,10 +121,10 @@ namespace Algebra
         {
             get
             {
-                String m = moCoefficient < (BigInteger)0 ? "-" : "+";
+                String m = moCoefficient < 0 ? "-" : "+";
                 if ((Decimal)moCoefficient % 1 == 0)
                 {
-                    m += (BigInteger)moCoefficient;
+                    m += (Int64)(Double)moCoefficient;
                 }
                 else
                 {

@@ -9,14 +9,14 @@ namespace Fraction
 {
     public partial class Fraction
     {
-        private BigInteger denominator=1;
+        private Int64 denominator=1;
         //The sign symbol is only stored in Numerator
-        private BigInteger numerator=0;
+        private Int64 numerator=0;
         public Fraction()
         {
             
         }
-        public Fraction(BigInteger numer, BigInteger deno)
+        public Fraction(Int64 numer, Int64 deno)
         {
             numerator = numer;
             denominator = deno;
@@ -25,20 +25,20 @@ namespace Fraction
         }
         public Fraction(Fraction numer, Fraction deno)
         {
-            BigInteger lcm = Arithmetic.IntegerFunctions.GetLCMGCD(numer.Denominator, deno.Denominator, Arithmetic.IntegerFunctions.LCM);
+            Int64 lcm = Arithmetic.IntegerFunctions.GetLCMGCD(numer.Denominator, deno.Denominator, Arithmetic.IntegerFunctions.LCM);
             numerator = numer.Numerator * (lcm / numer.Denominator);
             denominator = deno.Numerator * (lcm / deno.Denominator);
             Adjust();
             Reduct();
         }
-        public Fraction(Fraction numer, BigInteger deno)
+        public Fraction(Fraction numer, Int64 deno)
         {
             denominator = deno * numer.Denominator;
             numerator = numer.Numerator;
             Adjust();
             Reduct();
         }
-        public Fraction(BigInteger numer, Fraction deno)
+        public Fraction(Int64 numer, Fraction deno)
         {
             denominator = deno.Numerator;
             numerator = numer * deno.Denominator;
@@ -46,7 +46,7 @@ namespace Fraction
             Reduct();
         }
 
-        public Fraction(Decimal numer, BigInteger deno)
+        public Fraction(Decimal numer, Int64 deno)
         {
             Fraction temp = numer;
             denominator = deno * temp.Denominator;
@@ -55,7 +55,25 @@ namespace Fraction
             Reduct();
         }
 
-        public Fraction(BigInteger numer, Decimal deno)
+        public Fraction(Int64 numer, Decimal deno)
+        {
+            Fraction temp = deno;
+            denominator = temp.Numerator;
+            numerator = numer * temp.Denominator;
+            Adjust();
+            Reduct();
+        }
+
+        public Fraction(Double numer, Int64 deno)
+        {
+            Fraction temp = numer;
+            denominator = deno * temp.Denominator;
+            numerator = temp.Numerator;
+            Adjust();
+            Reduct();
+        }
+
+        public Fraction(Int64 numer, Double deno)
         {
             Fraction temp = deno;
             denominator = temp.Numerator;
@@ -68,7 +86,18 @@ namespace Fraction
         {
             Fraction t1 = numer;
             Fraction t2 = deno;
-            BigInteger lcm = Arithmetic.IntegerFunctions.GetLCMGCD(t1.Denominator, t2.Denominator, Arithmetic.IntegerFunctions.LCM);
+            Int64 lcm = Arithmetic.IntegerFunctions.GetLCMGCD(t1.Denominator, t2.Denominator, Arithmetic.IntegerFunctions.LCM);
+            numerator = t1.Numerator * (lcm / t1.Denominator);
+            denominator = t2.Numerator * (lcm / t2.Denominator);
+            Adjust();
+            Reduct();
+        }
+
+        public Fraction(Double numer,Double deno)
+        {
+            Fraction t1 = numer;
+            Fraction t2 = deno;
+            Int64 lcm = Arithmetic.IntegerFunctions.GetLCMGCD(t1.Denominator, t2.Denominator, Arithmetic.IntegerFunctions.LCM);
             numerator = t1.Numerator * (lcm / t1.Denominator);
             denominator = t2.Numerator * (lcm / t2.Denominator);
             Adjust();
@@ -78,7 +107,7 @@ namespace Fraction
         public Fraction(Decimal numer, Fraction deno)
         {
             Fraction t1 = numer;
-            BigInteger lcm = Arithmetic.IntegerFunctions.GetLCMGCD(t1.Denominator, deno.Denominator, Arithmetic.IntegerFunctions.LCM);
+            Int64 lcm = Arithmetic.IntegerFunctions.GetLCMGCD(t1.Denominator, deno.Denominator, Arithmetic.IntegerFunctions.LCM);
             numerator = t1.Numerator * (lcm / t1.Denominator);
             denominator = deno.Numerator * (lcm / deno.Denominator);
             Adjust();
@@ -88,7 +117,27 @@ namespace Fraction
         public Fraction(Fraction numer, Decimal deno)
         {
             Fraction t2 = deno;
-            BigInteger lcm = Arithmetic.IntegerFunctions.GetLCMGCD(numer.Denominator, t2.Denominator, Arithmetic.IntegerFunctions.LCM);
+            Int64 lcm = Arithmetic.IntegerFunctions.GetLCMGCD(numer.Denominator, t2.Denominator, Arithmetic.IntegerFunctions.LCM);
+            numerator = numer.Numerator * (lcm / numer.Denominator);
+            denominator = t2.Numerator * (lcm / t2.Denominator);
+            Adjust();
+            Reduct();
+        }
+
+        public Fraction(Double numer, Fraction deno)
+        {
+            Fraction t1 = numer;
+            Int64 lcm = Arithmetic.IntegerFunctions.GetLCMGCD(t1.Denominator, deno.Denominator, Arithmetic.IntegerFunctions.LCM);
+            numerator = t1.Numerator * (lcm / t1.Denominator);
+            denominator = deno.Numerator * (lcm / deno.Denominator);
+            Adjust();
+            Reduct();
+        }
+
+        public Fraction(Fraction numer, Double deno)
+        {
+            Fraction t2 = deno;
+            Int64 lcm = Arithmetic.IntegerFunctions.GetLCMGCD(numer.Denominator, t2.Denominator, Arithmetic.IntegerFunctions.LCM);
             numerator = numer.Numerator * (lcm / numer.Denominator);
             denominator = t2.Numerator * (lcm / t2.Denominator);
             Adjust();
@@ -97,20 +146,21 @@ namespace Fraction
 
         public Fraction(String frac)
         {
-            for (BigInteger i = 0; i < frac.Length; i += 1)
+            for (Int64 i = 0; i < frac.Length; i += 1)
             {
                 if (frac[(Int32)i] == '/')
                 {
-                    numerator = BigInteger.Parse(frac.Substring(0, (Int32)i));
-                    denominator = BigInteger.Parse(frac.Substring((Int32)i + 1));
+                    numerator = Int64.Parse(frac.Substring(0, (Int32)i));
+                    denominator = Int64.Parse(frac.Substring((Int32)i + 1));
                     break;
                 }
                 if (i == frac.Length - 1)
                 {
                     try
                     {
-                        numerator = BigInteger.Parse(frac);
-                    }catch(Exception e)
+                        numerator = Int64.Parse(frac);
+                    }
+                    catch (Exception e)
                     {
                         numerator = 1;
                     }
@@ -128,8 +178,8 @@ namespace Fraction
             {
                 if (number * multiplier % 1 == 0)
                 {
-                    numerator = (BigInteger)(number * multiplier);
-                    denominator = (BigInteger)multiplier;
+                    numerator = (Int64)(number * multiplier);
+                    denominator = (Int64)multiplier;
                     break;
                 }
                 else
@@ -140,13 +190,32 @@ namespace Fraction
             Reduct();
         }
 
-        public Fraction(BigInteger number)
+        public Fraction(Int64 number)
         {
             numerator = number;
             denominator = 1;
         }
 
-        public BigInteger Numerator
+        public Fraction(Double number)
+        {
+            Double multiplier = 1;
+            while (true)
+            {
+                if (number * multiplier % 1 == 0)
+                {
+                    numerator = (Int64)(number * multiplier);
+                    denominator = (Int64)multiplier;
+                    break;
+                }
+                else
+                {
+                    multiplier *= 10;
+                }
+            }
+            Reduct();
+        }
+
+        public Int64 Numerator
         {
             get => numerator;
             set
@@ -155,7 +224,7 @@ namespace Fraction
                 Reduct();
             }
         }
-        public BigInteger Denominator
+        public Int64 Denominator
         {
             get => denominator;
             set

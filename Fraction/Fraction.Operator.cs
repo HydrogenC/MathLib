@@ -17,13 +17,13 @@ namespace Fraction
 
         public static Fraction operator +(Fraction a, Fraction b)
         {
-            BigInteger lcm = GetLCMGCD(a.Denominator, b.Denominator,LCM);
+            Int64 lcm = GetLCMGCD(a.Denominator, b.Denominator, LCM);
             return new Fraction(a.Numerator * (lcm / a.Denominator) + b.Numerator * (lcm / b.Denominator), lcm);
         }
 
         public static Fraction operator -(Fraction a, Fraction b)
         {
-            BigInteger lcm = GetLCMGCD(a.Denominator, b.Denominator,LCM);
+            Int64 lcm = GetLCMGCD(a.Denominator, b.Denominator, LCM);
             return new Fraction(a.Numerator * (lcm / a.Denominator) - b.Numerator * (lcm / b.Denominator), lcm);
         }
 
@@ -42,7 +42,7 @@ namespace Fraction
             return a.ToString() != b.ToString();
         }
 
-        public static Boolean operator <(Fraction a,Fraction b)
+        public static Boolean operator <(Fraction a, Fraction b)
         {
             return (Decimal)a < (Decimal)b;
         }
@@ -62,17 +62,17 @@ namespace Fraction
             return (Decimal)a >= (Decimal)b;
         }
 
-        public static Fraction operator +(BigInteger a,Fraction b)
+        public static Fraction operator +(Int64 a, Fraction b)
         {
             return (Fraction)a + b;
         }
 
-        public static Fraction operator +(Fraction a, BigInteger b)
+        public static Fraction operator +(Fraction a, Int64 b)
         {
             return a + (Fraction)b;
         }
 
-        public static Fraction operator +(Fraction a,Decimal b)
+        public static Fraction operator +(Fraction a, Decimal b)
         {
             return a + (Fraction)b;
         }
@@ -82,12 +82,12 @@ namespace Fraction
             return (Fraction)a + b;
         }
 
-        public static Fraction operator -(BigInteger a, Fraction b)
+        public static Fraction operator -(Int64 a, Fraction b)
         {
             return (Fraction)a - b;
         }
 
-        public static Fraction operator -(Fraction a, BigInteger b)
+        public static Fraction operator -(Fraction a, Int64 b)
         {
             return a - (Fraction)b;
         }
@@ -102,12 +102,12 @@ namespace Fraction
             return (Fraction)a - b;
         }
 
-        public static Fraction operator *(BigInteger a, Fraction b)
+        public static Fraction operator *(Int64 a, Fraction b)
         {
             return (Fraction)a * b;
         }
 
-        public static Fraction operator *(Fraction a, BigInteger b)
+        public static Fraction operator *(Fraction a, Int64 b)
         {
             return a * (Fraction)b;
         }
@@ -122,12 +122,12 @@ namespace Fraction
             return (Fraction)a * b;
         }
 
-        public static Fraction operator /(BigInteger a, Fraction b)
+        public static Fraction operator /(Int64 a, Fraction b)
         {
             return (Fraction)a / b;
         }
 
-        public static Fraction operator /(Fraction a, BigInteger b)
+        public static Fraction operator /(Fraction a, Int64 b)
         {
             return a / (Fraction)b;
         }
@@ -152,49 +152,49 @@ namespace Fraction
             return a;
         }
 
-        public static BigInteger operator %(Fraction a,Fraction b)
+        public static Int64 operator %(Fraction a, Fraction b)
         {
-            return (BigInteger)((Decimal)a % (Decimal)b);
+            return (Int64)((Decimal)a % (Decimal)b);
         }
 
-        public static BigInteger operator %(Decimal a, Fraction b)
+        public static Int64 operator %(Decimal a, Fraction b)
         {
-            return (BigInteger)(a % (Decimal)b);
+            return (Int64)(a % (Decimal)b);
         }
 
-        public static BigInteger operator %(Fraction a, Decimal b)
+        public static Int64 operator %(Fraction a, Decimal b)
         {
-            return (BigInteger)((Decimal)a % b);
+            return (Int64)((Decimal)a % b);
         }
 
-        public static BigInteger operator %(BigInteger a, Fraction b)
+        public static Int64 operator %(Int64 a, Fraction b)
         {
-            return (BigInteger)((Decimal)a % (Decimal)b);
+            return (Int64)(a % (Decimal)b);
         }
 
-        public static BigInteger operator %(Fraction a, BigInteger b)
+        public static Int64 operator %(Fraction a, Int64 b)
         {
-            return (BigInteger)((Decimal)a % (Decimal)b);
+            return (Int64)((Decimal)a % b);
         }
 
-        public static Boolean operator >(BigInteger a,Fraction b)
+        public static Boolean operator >(Int64 a, Fraction b)
         {
-            return (Decimal)a > (Decimal)b;
+            return a > (Decimal)b;
         }
 
-        public static Boolean operator <(BigInteger a, Fraction b)
+        public static Boolean operator <(Int64 a, Fraction b)
         {
-            return (Decimal)a < (Decimal)b;
+            return a < (Decimal)b;
         }
 
-        public static Boolean operator >=(BigInteger a, Fraction b)
+        public static Boolean operator >=(Int64 a, Fraction b)
         {
-            return (Decimal)a >= (Decimal)b;
+            return a >= (Decimal)b;
         }
 
-        public static Boolean operator <=(BigInteger a, Fraction b)
+        public static Boolean operator <=(Int64 a, Fraction b)
         {
-            return (Decimal)a <= (Decimal)b;
+            return a <= (Decimal)b;
         }
 
         public static Boolean operator >(Decimal a, Fraction b)
@@ -218,24 +218,24 @@ namespace Fraction
         }
 
 
-        public static Boolean operator >(Fraction a, BigInteger b)
+        public static Boolean operator >(Fraction a, Int64 b)
         {
-            return (Decimal)a > (Decimal)b;
+            return (Decimal)a > b;
         }
 
-        public static Boolean operator <(Fraction a, BigInteger b)
+        public static Boolean operator <(Fraction a, Int64 b)
         {
-            return (Decimal)a < (Decimal)b;
+            return (Decimal)a < b;
         }
 
-        public static Boolean operator >=(Fraction a, BigInteger b)
+        public static Boolean operator >=(Fraction a, Int64 b)
         {
-            return (Decimal)a >= (Decimal)b;
+            return (Decimal)a >= b;
         }
 
-        public static Boolean operator <=(Fraction a, BigInteger b)
+        public static Boolean operator <=(Fraction a, Int64 b)
         {
-            return (Decimal)a <= (Decimal)b;
+            return (Decimal)a <= b;
         }
 
         public static Boolean operator >(Fraction a, Decimal b)
@@ -258,22 +258,22 @@ namespace Fraction
             return (Decimal)a <= b;
         }
 
-        public static Boolean operator ==(Fraction a,BigInteger b)
+        public static Boolean operator ==(Fraction a, Int64 b)
         {
             return (Decimal)a == (Decimal)b;
         }
 
-        public static Boolean operator !=(Fraction a, BigInteger b)
+        public static Boolean operator !=(Fraction a, Int64 b)
         {
             return (Decimal)a != (Decimal)b;
         }
 
-        public static Boolean operator ==(BigInteger a, Fraction b)
+        public static Boolean operator ==(Int64 a, Fraction b)
         {
             return (Decimal)a == (Decimal)b;
         }
 
-        public static Boolean operator !=(BigInteger a, Fraction b)
+        public static Boolean operator !=(Int64 a, Fraction b)
         {
             return (Decimal)a != (Decimal)b;
         }

@@ -16,27 +16,29 @@ namespace Fraction
 
         public Fraction Sqrt()
         {
-            Decimal a = (Decimal)numerator;
-            Decimal b = (Decimal)denominator;
-            a = Decimal.Floor((Decimal)Math.Sqrt((Double)a));
-            b = Decimal.Floor((Decimal)Math.Sqrt((Double)b));
-            return new Fraction((BigInteger)a, (BigInteger)b);
+            
+            return new Fraction((Int64)Math.Sqrt(denominator), (Int64)Math.Sqrt(denominator));
+        }
+
+        public Fraction HDSqrt()
+        {
+            return new Fraction(Math.Sqrt(denominator), Math.Sqrt(denominator));
         }
 
         public Fraction Pow(Decimal times)
         {
-            Decimal a = (Decimal)numerator;
-            Decimal b = (Decimal)denominator;
+            Decimal a = numerator;
+            Decimal b =denominator;
             a = (Decimal)Math.Floor(Math.Pow((Double)a,(Double)times));
             b = (Decimal)Math.Floor(Math.Pow((Double)b,(Double)times));
-            return new Fraction((BigInteger)a, (BigInteger)b);
+            return new Fraction((Int64)a, (Int64)b);
         }
 
         private void Reduct()
         {
             if (numerator != 0)
             {
-                BigInteger gcd = Arithmetic.IntegerFunctions.GetLCMGCD(numerator, denominator, Arithmetic.IntegerFunctions.GCD);
+                Int64 gcd = Arithmetic.IntegerFunctions.GetLCMGCD(numerator, denominator, Arithmetic.IntegerFunctions.GCD);
                 numerator = numerator / gcd;
                 denominator = denominator / gcd;
             }
@@ -57,7 +59,7 @@ namespace Fraction
 
         public Fraction Abs()
         {
-            return new Fraction((BigInteger)Math.Abs((Decimal)numerator), denominator);
+            return new Fraction((Int64)Math.Abs((Decimal)numerator), denominator);
         }
 
         public static Fraction Parse(String fraction)

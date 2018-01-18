@@ -13,25 +13,36 @@ namespace Fraction
         {
             return (Decimal)a.Numerator / (Decimal)a.Denominator;
         }
-        public static explicit operator BigInteger(Fraction a)
+
+        public static implicit operator Double(Fraction a)
         {
-            return (BigInteger)Math.Floor(a);
+            return (Double)a.Numerator / (Double)a.Denominator;
         }
+
         public static explicit operator String(Fraction a)
         {
             return a.ToString();
         }
+
         public static implicit operator Fraction(Decimal a)
         {
             return new Fraction(a);
         }
+
+        public static implicit operator Fraction(Double a)
+        {
+            return new Fraction(a);
+        }
+
         public static explicit operator Fraction(String a)
         {
             return new Fraction(a);
         }
-        public static explicit operator Fraction(BigInteger a)
+
+        public static explicit operator Fraction(Int64 a)
         {
             return new Fraction(a);
         }
+
     }
 }

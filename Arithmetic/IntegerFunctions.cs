@@ -16,12 +16,12 @@ namespace Arithmetic
         /// <param name="b">The numbers</param>
         /// <param name="type">If true, it returns GCD, else returns LCM</param>
         /// <returns></returns>
-        public static BigInteger GetLCMGCD(BigInteger a, BigInteger b, Boolean type)
+        public static Int64 GetLCMGCD(Int64 a, Int64 b, Boolean type)
         {
-            BigInteger min = a < b ? a : b;
-            BigInteger max = a > b ? a : b;
-            BigInteger LCM;
-            for (BigInteger i = 1; ; i += 1)
+            Int64 min = a < b ? a : b;
+            Int64 max = a > b ? a : b;
+            Int64 LCM;
+            for (Int64 i = 1; ; i += 1)
             {
                 if ((max * i) % min == 0)
                 {
