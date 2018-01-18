@@ -6,7 +6,7 @@ namespace Algebra
     /// <summary>
     /// Use x^2^ to express x²
     /// </summary>
-    public class Monomial
+    public partial class Monomial
     {
         private readonly List<Letter> moLetters = new List<Letter>();
         private Fraction.Fraction moCoefficient;
@@ -77,35 +77,6 @@ namespace Algebra
             set => moCoefficient = value;
         }
 
-        public Char Operator
-        {
-            get
-            {
-                if (moCoefficient < 0)
-                {
-                    return '-';
-                }
-                else
-                {
-                    return '+';
-                }
-            }
-            set
-            {
-                switch (value)
-                {
-                    case '+':
-                        moCoefficient = moCoefficient.Abs();
-                        break;
-                    case '-':
-                        moCoefficient = -moCoefficient.Abs();
-                        break;
-                    default:
-                        throw new Exception("Invaild operator! ");
-                }
-            }
-        }
-
         public override String ToString()
         {
             return ToString(false, false);
@@ -155,6 +126,21 @@ namespace Algebra
                     m.Add(i.GetLetter);
                 }
                 return m;
+            }
+        }
+
+        public Boolean IsNegative
+        {
+            get
+            {
+                if (moCoefficient >= 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
         }
     }

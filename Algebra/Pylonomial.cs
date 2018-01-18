@@ -3,22 +3,11 @@ using System.Collections.Generic;
 
 namespace Algebra
 {
-    public class PylomialOperator
-    {
-        public static Boolean Plus
-        {
-            get => true;
-        }
-        public static Boolean Minus
-        {
-            get => false;
-        }
-    }
 
     public partial class Pylonomial
     {
         private List<Monomial> moList = new List<Monomial>();
-        private Boolean pylonomialOperator = PylomialOperator.Plus;
+        private Boolean isPositive = true;
 
         public Pylonomial()
         {
@@ -56,14 +45,12 @@ namespace Algebra
             get => moList;
         }
 
-        
-
         public String Value
         {
             get
             {
                 String temp = "";
-                if (!pylonomialOperator)
+                if (!isPositive)
                 {
                     ChangeSign();
                 }
@@ -73,6 +60,11 @@ namespace Algebra
                 }
                 return temp;
             }
+        }
+
+        public Boolean IsPositive {
+            get => isPositive;
+            set => isPositive = value;
         }
     }
 }

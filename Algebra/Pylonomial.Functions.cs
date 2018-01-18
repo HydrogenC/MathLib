@@ -6,13 +6,13 @@ namespace Algebra
     {
         public void ChangeSign()
         {
-            if (pylonomialOperator)
+            if (isPositive)
             {
-                pylonomialOperator = PylomialOperator.Minus;
+                isPositive = false;
             }
             else
             {
-                pylonomialOperator = PylomialOperator.Plus;
+                isPositive = true;
             }
             foreach (var i in moList)
             {
