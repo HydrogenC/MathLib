@@ -6,12 +6,8 @@ namespace Test
     {
         static void Main(string[] args)
         {
-            Algebra.Pylonomial pylonomial = new Algebra.Pylonomial("23(-x^2^+8x+16-12)");
-            Algebra.Product product = new Algebra.Product();
-            Algebra.Pylonomial others = new Algebra.Pylonomial();
-            Algebra.Pylonomial.TryFactorization(pylonomial, out product, out others);
+            Algebra.Product product = new Algebra.Product("-34a(3s+4d)(7u-3s)");
             Console.WriteLine(product.ToString());
-            Console.WriteLine(others.ToString());
             Console.ReadKey();
         }
     }

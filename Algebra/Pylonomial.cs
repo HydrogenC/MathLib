@@ -131,7 +131,7 @@ namespace Algebra
             }
             foreach (var i in moList)
             {
-                temp += i.ToString(true);
+                temp += i.ToString(true,false,false);
             }
             temp += ")";
             return temp;

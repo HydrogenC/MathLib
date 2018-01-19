@@ -21,6 +21,8 @@ namespace Algebra
                 prCofficient *= i.Coefficient;
                 i.Coefficient = (Fraction.Fraction)1;
             }
+
+            prCofficient.Adjust();
         }
     }
 }

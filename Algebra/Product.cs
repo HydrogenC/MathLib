@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace Algebra
 {
@@ -33,6 +34,34 @@ namespace Algebra
             Extract();
         }
 
+        public Product(String product)
+        {
+            if (!(product.StartsWith("+") || product.StartsWith("-")))
+            {
+                product = "+" + product;
+            }
+            const String regex1 = @"[+-]\d{0,65536}[A-Za-z]{0,65536}([(]([+-]?\d[A-Za-z]{0,65536})+[)]){0,65536}";
+            const String regex2= @"[(]([+-]?\d[A-Za-z]{0,65536})+[)]";
+            const String regex3 = @"[+-]\d{0,65536}[A-Za-z]{0,65536}";
+            const String regex4 = @"([+-]?\d[A-Za-z]{0,65536})+";
+            if (Regex.IsMatch(product, regex1))
+            {
+                MatchCollection matchCollection = Regex.Matches(product, regex2);
+                for (Int64 i = 0; i < matchCollection.Count; i += 1) 
+                {
+                    Match match1 = Regex.Match(matchCollection[(Int32)i].Value, regex4);
+                    pList.Add(new Pylonomial(match1.Value));
+                }
+                Match match = Regex.Match(product, regex3);
+                mList.Add(new Monomial(match.Value));
+            }
+            else
+            {
+                throw new Exception("Wrong format! ");
+            }
+            Extract();
+        }
+
         public void Add(Monomial monomial)
         {
             mList.Add(monomial);
@@ -60,7 +89,7 @@ namespace Algebra
             return ToString(false);
         }
 
-        public String ToString(Boolean withSign)
+        public String ToString(Boolean withSign, Boolean useFraction = false)
         {
             String temp = "";
             if (IsPositive&&withSign)
@@ -74,7 +103,7 @@ namespace Algebra
             }
             foreach (var i in pList)
             {
-                temp += "(" + i.ToString() + ")";
+                temp += "(" + i.ToString(true,false) + ")";
             }
             return temp;
         }
