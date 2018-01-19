@@ -8,7 +8,7 @@ namespace Algebra
     /// </summary>
     public partial class Monomial
     {
-        private readonly List<Letter> moLetters = new List<Letter>();
+        private List<Letter> moLetters = new List<Letter>();
         private Fraction.Fraction moCoefficient;
 
         public Monomial()
@@ -19,13 +19,13 @@ namespace Algebra
         {
             if (monomial.Length > 0)
             {
-                if (Functions.ContainsLetters(monomial))
+                if (ContainsLetters(monomial))
                 {
                     if (!(monomial.StartsWith("+") || monomial.StartsWith("-")))
                     {
                         monomial = "+" + monomial;
                     }
-                    moCoefficient = Functions.OutputNumbers(monomial, ref moLetters);
+                    moCoefficient = OutputNumbers(monomial, ref moLetters);
                 }
                 else
                 {
@@ -45,7 +45,7 @@ namespace Algebra
         public Monomial(Fraction.Fraction coefficient, String letters)
         {
             moCoefficient = coefficient;
-            moLetters = Functions.OutputNumbers(letters);
+            moLetters = OutputNumbers(letters);
         }
 
         public Monomial(Fraction.Fraction coefficient, List<Letter> list)
@@ -67,10 +67,10 @@ namespace Algebra
 
         public override String ToString()
         {
-            return ToString(false, false);
+            return ToString(false,false, false);
         }
 
-        public String ToString(Boolean containsSign, Boolean useFraction = false)
+        public String ToString(Boolean containsSign,Boolean binaryFormat=false, Boolean useFraction = false)
         {
             String temp = "";
             if (useFraction)
@@ -93,7 +93,14 @@ namespace Algebra
                 }
                 else
                 {
-                    temp += i.GetLetter + Arithmetic.IntegerFunctions.ToSuperscript(i.Exponent.ToString());
+                    if (binaryFormat)
+                    {
+                        temp += i.GetLetter + @"^" + i.Exponent + @"^";
+                    }
+                    else
+                    {
+                        temp += i.GetLetter + Arithmetic.IntegerFunctions.ToSuperscript(i.Exponent.ToString());
+                    }
                 }
             }
             return temp;
@@ -135,6 +142,17 @@ namespace Algebra
                 else
                 {
                     return false;
+                }
+            }
+            set
+            {
+                if (value)
+                {
+                    moCoefficient = moCoefficient.Abs();
+                }
+                else
+                {
+                    moCoefficient = -moCoefficient.Abs();
                 }
             }
         }

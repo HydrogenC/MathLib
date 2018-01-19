@@ -3,34 +3,46 @@ using System.Collections.Generic;
 
 namespace Algebra
 {
-    public class Product
+    public partial class Product
     {
         Boolean isPositive = true;
         List<Monomial> mList = new List<Monomial>();
         List<Pylonomial> pList = new List<Pylonomial>();
+
+        /// <summary>
+        /// Create an empty Product instance. 
+        /// </summary>
         public Product()
         {
 
         }
 
+        /// <summary>
+        /// Initial the Product with a monomial. 
+        /// </summary>
+        /// <param name="monomial">The monomial to initial with. </param>
         public Product(Monomial monomial)
         {
             mList.Add(monomial);
+            CheckIsPositive();
         }
 
         public Product(Pylonomial pylonomial)
         {
             pList.Add(pylonomial);
+            CheckIsPositive();
         }
 
         public void Add(Monomial monomial)
         {
             mList.Add(monomial);
+            CheckIsPositive();
         }
 
         public void Add(Pylonomial pylonomial)
         {
             pList.Add(pylonomial);
+            CheckIsPositive();
         }
 
         public List<Pylonomial> PylonomialList
@@ -65,7 +77,7 @@ namespace Algebra
             }
             foreach (var i in pList)
             {
-                temp += "(" + i.Value + ")";
+                temp += "(" + i.ToString() + ")";
             }
             return temp;
         }

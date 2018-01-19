@@ -20,5 +20,27 @@ namespace Algebra
                 i.Coefficient.Adjust();
             }
         }
+
+        public void Add(Monomial monomial)
+        {
+            moList.Add(monomial);
+        }
+
+        public void Add(String str)
+        {
+            Pylonomial pylonomial = new Pylonomial(str);
+            foreach(var i in pylonomial.Monomials)
+            {
+                moList.Add(i);
+            }
+        }
+
+        public void Add(Pylonomial pylonomial)
+        {
+            foreach (var i in pylonomial.Monomials)
+            {
+                moList.Add(i);
+            }
+        }
     }
 }

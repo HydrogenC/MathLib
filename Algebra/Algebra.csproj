@@ -44,8 +44,8 @@
     <Compile Include="Letter.cs" />
     <Compile Include="Monomial.Functions.cs" />
     <Compile Include="Product.cs" />
+    <Compile Include="Product.Functions.cs" />
     <Compile Include="Pylomomial.Factorization.cs" />
-    <Compile Include="Functions.cs" />
     <Compile Include="Monomial.cs" />
     <Compile Include="Pylonomial.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
