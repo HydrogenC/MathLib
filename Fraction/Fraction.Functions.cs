@@ -4,30 +4,15 @@ namespace Fraction
 {
     partial class Fraction
     {
-        public Fraction Reciprocal()
-        {
-            return new Fraction(denominator, numerator);
-        }
+        public Fraction Reciprocal() => new Fraction(denominator, numerator);
 
-        public Fraction Sqrt()
-        {
+        public Fraction Sqrt() => new Fraction((Int64)Math.Sqrt(denominator), (Int64)Math.Sqrt(denominator));
 
-            return new Fraction((Int64)Math.Sqrt(denominator), (Int64)Math.Sqrt(denominator));
-        }
+        public Fraction HDSqrt() => new Fraction(Math.Sqrt(denominator), Math.Sqrt(denominator));
 
-        public Fraction HDSqrt()
-        {
-            return new Fraction(Math.Sqrt(denominator), Math.Sqrt(denominator));
-        }
+        public Fraction Pow(Double times) => new Fraction((Int64)Math.Pow(numerator, times), (Int64)Math.Pow(denominator, times));
 
-        public Fraction Pow(Decimal times)
-        {
-            Decimal a = numerator;
-            Decimal b = denominator;
-            a = (Decimal)Math.Floor(Math.Pow((Double)a, (Double)times));
-            b = (Decimal)Math.Floor(Math.Pow((Double)b, (Double)times));
-            return new Fraction((Int64)a, (Int64)b);
-        }
+        public Fraction HDPow(Double times) => new Fraction(Math.Pow(numerator, times), Math.Pow(denominator, times));
 
         private void Reduct()
         {
@@ -52,14 +37,8 @@ namespace Fraction
             }
         }
 
-        public Fraction Abs()
-        {
-            return new Fraction(Math.Abs(numerator), denominator);
-        }
+        public Fraction Abs() => new Fraction(Math.Abs(numerator), denominator);
 
-        public static Fraction Parse(String fraction)
-        {
-            return new Fraction(fraction);
-        }
+        public static Fraction Parse(String fraction) => new Fraction(fraction);
     }
 }

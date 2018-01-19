@@ -8,10 +8,6 @@ namespace Algebra
 {
     partial class Monomial
     {
-        public Monomial Abs()
-        {
-            //Unfinished
-            return new Monomial();
-        }
+        public Monomial Abs() => new Monomial(AbsCoefficient, Letters);
     }
 }

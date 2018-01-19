@@ -45,19 +45,7 @@ namespace Algebra
         public Monomial(Fraction.Fraction coefficient, String letters)
         {
             moCoefficient = coefficient;
-            foreach (Char i in letters)
-            {
-                moLetters.Add(new Letter(i));
-            }
-        }
-
-        public Monomial(Fraction.Fraction coefficient, List<Char> letters)
-        {
-            moCoefficient = coefficient;
-            foreach (var i in letters)
-            {
-                moLetters.Add(new Letter(i));
-            }
+            moLetters = Functions.OutputNumbers(letters);
         }
 
         public Monomial(Fraction.Fraction coefficient, List<Letter> list)
@@ -116,20 +104,27 @@ namespace Algebra
             get => moLetters;
         }
 
-        public List<Char> CharLetters
+        public String ToStringNoCoefficient
         {
             get
             {
-                List<Char> m = new List<Char>();
+                String temp = "";
                 foreach (var i in moLetters)
                 {
-                    m.Add(i.GetLetter);
+                    if (i.Exponent == 1)
+                    {
+                        temp += i.GetLetter;
+                    }
+                    else
+                    {
+                        temp += i.GetLetter + Arithmetic.IntegerFunctions.ToSuperscript(i.Exponent.ToString());
+                    }
                 }
-                return m;
+                return temp;
             }
         }
 
-        public Boolean IsNegative
+        public Boolean IsPositive
         {
             get
             {
