@@ -5,7 +5,7 @@ namespace Algebra
 {
     public partial class Product
     {
-        Boolean isPositive = true;
+        Fraction.Fraction prCofficient = (Fraction.Fraction)1;
         List<Monomial> mList = new List<Monomial>();
         List<Pylonomial> pList = new List<Pylonomial>();
 
@@ -24,25 +24,25 @@ namespace Algebra
         public Product(Monomial monomial)
         {
             mList.Add(monomial);
-            CheckIsPositive();
+            Extract();
         }
 
         public Product(Pylonomial pylonomial)
         {
             pList.Add(pylonomial);
-            CheckIsPositive();
+            Extract();
         }
 
         public void Add(Monomial monomial)
         {
             mList.Add(monomial);
-            CheckIsPositive();
+            Extract();
         }
 
         public void Add(Pylonomial pylonomial)
         {
             pList.Add(pylonomial);
-            CheckIsPositive();
+            Extract();
         }
 
         public List<Pylonomial> PylonomialList
@@ -63,11 +63,11 @@ namespace Algebra
         public String ToString(Boolean withSign)
         {
             String temp = "";
-            if (isPositive&&withSign)
+            if (IsPositive&&withSign)
             {
                 temp = "+";
             }
-            if (!isPositive)
+            if (!IsPositive)
             {
                 temp = "-";
             }
@@ -83,8 +83,28 @@ namespace Algebra
         }
 
         public Boolean IsPositive {
-            get => isPositive;
-            set => isPositive = value;
+            get
+            {
+                if (prCofficient >= 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            set
+            {
+                if (value)
+                {
+                    prCofficient = prCofficient.Abs();
+                }
+                else
+                {
+                    prCofficient = -prCofficient.Abs();
+                }
+            }
         }
     }
 }

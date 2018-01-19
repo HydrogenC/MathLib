@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
+using Fraction;
 
 namespace Algebra
 {
@@ -7,7 +9,7 @@ namespace Algebra
     public partial class Pylonomial
     {
         private List<Monomial> moList = new List<Monomial>();
-        private Boolean isPositive = true;
+        private Fraction.Fraction pyCoefficient = (Fraction.Fraction)"1/1";
 
         public Pylonomial()
         {
@@ -16,42 +18,49 @@ namespace Algebra
 
         public Pylonomial(String pylonomial)
         {
+            const String pattern1 = @"^[+-](\d+)?[(]";
+            const String pattern2 = @"[+-]\d+";
+            const String pattern3 = @"[+-]\d{0,65536}[A-Za-z]?(\^\d+\^)?";
+            const String pattern4 = @"[+-]";
             if (!(pylonomial.StartsWith("+") || pylonomial.StartsWith("-")))
             {
                 pylonomial = "+" + pylonomial;
             }
-            if (pylonomial.StartsWith("+(") && pylonomial.EndsWith(")"))
+            Match match = Regex.Match(pylonomial, pattern1);
+            if(Regex.IsMatch(match.Value, pattern2))
             {
-                pylonomial = pylonomial.Substring(2, pylonomial.Length - 3);
+                pyCoefficient = Fraction.Fraction.Parse(Regex.Match(match.Value, pattern2).Value);
             }
-            if (pylonomial.StartsWith("-(") && pylonomial.EndsWith(")"))
+            else
             {
-                pylonomial = pylonomial.Substring(2, pylonomial.Length - 3);
-                isPositive = false;
-            }
-            List<String> temp = new List<String>();
-            Int64 previousOperator = 0;
-            for (Int64 i = 1; i < pylonomial.Length; i += 1)
-            {
-                if (pylonomial[(Int32)i].Equals('+') || pylonomial[(Int32)i].Equals('-'))
+                switch (Regex.Match(match.Value, pattern4).Value)
                 {
-                    if (i - previousOperator >= 2)
-                    {
-                        temp.Add(pylonomial.Substring((Int32)previousOperator, (Int32)i - (Int32)previousOperator));
-                        previousOperator = i;
-                    }
+                    case "+":
+                        pyCoefficient = (Fraction.Fraction)1;
+                        break;
+                    case "-":
+                        pyCoefficient = (Fraction.Fraction)(-1);
+                        break;
+                    default:
+                        throw new Exception("Uncaught exception");
                 }
             }
-            temp.Add(pylonomial.Substring((Int32)previousOperator, pylonomial.Length - (Int32)previousOperator));
-            foreach (var i in temp)
+            pylonomial=Regex.Replace(pylonomial, pattern1, "");
+            pylonomial = pylonomial.Replace(")", "");
+            if (!(pylonomial.StartsWith("+") || pylonomial.StartsWith("-")))
             {
-                moList.Add(new Monomial(i));
+                pylonomial = "+" + pylonomial;
+            }
+            MatchCollection matchCollection = Regex.Matches(pylonomial, pattern3);
+            for(Int64 i = 0; i < matchCollection.Count; i += 1)
+            {
+                moList.Add(new Monomial(matchCollection[(Int32)i].Value));
             }
         }
 
         public Pylonomial(String pylonomial, Boolean positive)
         {
-            isPositive = positive;
+            pyCoefficient = (Fraction.Fraction)1;
             if (!(pylonomial.StartsWith("+") || pylonomial.StartsWith("-")))
             {
                 pylonomial = "+" + pylonomial;
@@ -86,35 +95,82 @@ namespace Algebra
             return ToString(false);
         }
 
-        public String ToString(Boolean withSign)
+        public String ToString(Boolean withSign, Boolean useFraction=false)
         {
             String temp = "";
-            if (withSign)
+            String coe="";
+            if (useFraction)
             {
-                if (!isPositive)
+                coe = pyCoefficient.ToString();
+            }
+            else
+            {
+                if (pyCoefficient == 1)
                 {
-                    temp = "-(";
+                    coe = "";
                 }
                 else
                 {
-                    temp = "+(";
+                    coe = ((Int64)pyCoefficient).ToString();
                 }
+            }
+            if (withSign)
+            {
+                if (IsPositive)
+                {
+                    temp = "+" + coe+"(";
+                }
+                else
+                {
+                    temp = coe + "(";
+                }
+            }
+            else
+            {
+                temp = pyCoefficient + "(";
             }
             foreach (var i in moList)
             {
                 temp += i.ToString(true);
             }
-            if (withSign)
-            {
-                temp += ")";
-            }
+            temp += ")";
             return temp;
         }
 
         public Boolean IsPositive
         {
-            get => isPositive;
-            set => isPositive = value;
+            get
+            {
+                if (pyCoefficient >= 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            set
+            {
+                if (value)
+                {
+                    pyCoefficient = pyCoefficient.Abs();
+                }
+                else
+                {
+                    pyCoefficient = -pyCoefficient.Abs();
+                }
+            }
+        }
+
+        public Fraction.Fraction Coefficient {
+            get => pyCoefficient;
+            set => pyCoefficient = value;
+        }
+
+        public Fraction.Fraction AbsCoefficient
+        {
+            get => pyCoefficient.Abs();
         }
     }
 }

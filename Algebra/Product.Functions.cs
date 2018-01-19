@@ -8,32 +8,18 @@ namespace Algebra
 {
     partial class Product
     {
-        private void CheckIsPositive()
+        private void Extract()
         {
-            Int64 numberOfNegative = 0;
             foreach(var i in pList)
             {
-                if (!i.IsPositive)
-                {
-                    i.IsPositive = true;
-                    numberOfNegative += 1;
-                }
+                prCofficient *= i.Coefficient;
+                i.Coefficient = (Fraction.Fraction)1;
             }
+
             foreach (var i in mList)
             {
-                if (!i.IsPositive)
-                {
-                    i.IsPositive = true;
-                    numberOfNegative += 1;
-                }
-            }
-            if (numberOfNegative % 2 == 0)
-            {
-                return;
-            }
-            else
-            {
-                isPositive = !isPositive;
+                prCofficient *= i.Coefficient;
+                i.Coefficient = (Fraction.Fraction)1;
             }
         }
     }

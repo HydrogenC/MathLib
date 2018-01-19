@@ -6,13 +6,13 @@ namespace Algebra
     {
         public void ChangeSign()
         {
-            if (isPositive)
+            if (IsPositive)
             {
-                isPositive = false;
+                IsPositive = false;
             }
             else
             {
-                isPositive = true;
+                IsPositive = true;
             }
             foreach (var i in moList)
             {
