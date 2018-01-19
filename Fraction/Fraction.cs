@@ -194,6 +194,7 @@ namespace Fraction
                     multiplier *= 10;
                 }
             }
+            Adjust();
             Reduct();
         }
 

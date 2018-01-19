@@ -67,10 +67,7 @@ namespace Algebra
             {
                 temp = "+";
             }
-            if (!IsPositive)
-            {
-                temp = "-";
-            }
+            temp += prCofficient;
             foreach (var i in mList)
             {
                 temp += i.ToString(false);

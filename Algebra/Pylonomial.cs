@@ -42,7 +42,7 @@ namespace Algebra
                         pyCoefficient = (Fraction.Fraction)(-1);
                         break;
                     default:
-                        throw new Exception("Uncaught exception");
+                        break;
                 }
             }
             pylonomial=Regex.Replace(pylonomial, pattern1, "");
